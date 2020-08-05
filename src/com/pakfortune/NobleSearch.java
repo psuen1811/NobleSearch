@@ -28,7 +28,7 @@ public class NobleSearch {
             }
         }
 
-        System.out.println("祿：" + location + "在" + Direction.findByValue((Integer)circularArrayList.get(result) % MAGIC_NUMBER));
+        System.out.println("祿：  " + location + "在" + Direction.findByValue((Integer)circularArrayList.get(result) % MAGIC_NUMBER));
 
         // 馬
         SixtyJiaziTable stemBranch = null;
@@ -44,7 +44,7 @@ public class NobleSearch {
             }
         }
         assert stemBranch != null;
-        System.out.println("馬：" + stemBranch.name() + "在" + Direction.findByValue((Integer)circularArrayList
+        System.out.println("馬：  " + stemBranch.name() + "在" + Direction.findByValue((Integer)circularArrayList
                 .get(stemBranch.ordinal()) % MAGIC_NUMBER));
 
         // 貴人

@@ -1,7 +1,5 @@
 package com.pakfortune;
 
-import com.google.common.collect.ImmutableList;
-
 import java.util.*;
 
 @SuppressWarnings("unused")
@@ -28,8 +26,7 @@ public enum SixtyJiaziTable {
     }
 
     public static List<Integer> getSixJiaziList() {
-        return ImmutableList.copyOf(values);
-    }
+        return Collections.unmodifiableList(values); }
 
     public static SixtyJiaziTable findByValue(int value) {
         for (SixtyJiaziTable v : values()) {

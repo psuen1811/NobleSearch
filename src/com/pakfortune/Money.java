@@ -1,7 +1,6 @@
 package com.pakfortune;
 
-import com.google.common.collect.ImmutableBiMap;
-
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +34,6 @@ public enum Money {
     }
 
     public static Map<Money, String> getLookup() {
-        return ImmutableBiMap.copyOf(lookup);
+        return Collections.unmodifiableMap(lookup);
     }
 }
