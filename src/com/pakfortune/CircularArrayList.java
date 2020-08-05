@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@SuppressWarnings("unused")
+
 public class CircularArrayList<E> extends ArrayList<E> {
+    @SuppressWarnings("unused")
     public CircularArrayList() {
     }
 
+    @SuppressWarnings("unused")
     public CircularArrayList(int size) {
         super(size);
     }

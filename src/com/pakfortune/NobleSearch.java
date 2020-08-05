@@ -28,7 +28,7 @@ public class NobleSearch {
             }
         }
 
-        System.out.println(location + "在" + Direction.findByValue((Integer)circularArrayList.get(result) % MAGIC_NUMBER));
+        System.out.println("祿：" + location + "在" + Direction.findByValue((Integer)circularArrayList.get(result) % MAGIC_NUMBER));
 
         // 馬
         SixtyJiaziTable stemBranch = null;
@@ -44,7 +44,7 @@ public class NobleSearch {
             }
         }
         assert stemBranch != null;
-        System.out.println(stemBranch.name() + "在" + Direction.findByValue((Integer)circularArrayList
+        System.out.println("馬：" + stemBranch.name() + "在" + Direction.findByValue((Integer)circularArrayList
                 .get(stemBranch.ordinal()) % MAGIC_NUMBER));
 
         // 貴人
@@ -61,9 +61,9 @@ public class NobleSearch {
             }
         }
         assert list != null;
-        System.out.println(list.get(0) + "在" + Direction.findByValue((Integer)circularArrayList
+        System.out.println("貴人：" + list.get(0) + "在" + Direction.findByValue((Integer)circularArrayList
                 .get(SixtyJiaziTable.valueOf(list.get(0).name()).ordinal()) % MAGIC_NUMBER));
-        System.out.println(list.get(1) + "在" + Direction.findByValue((Integer)circularArrayList
+        System.out.println("貴人：" + list.get(1) + "在" + Direction.findByValue((Integer)circularArrayList
                 .get(SixtyJiaziTable.valueOf(list.get(1).name()).ordinal()) % MAGIC_NUMBER));
     }
 }
