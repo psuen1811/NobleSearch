@@ -34,6 +34,5 @@ public enum Money {
     }
 
     public static Map<Money, String> getLookup() {
-        return Collections.unmodifiableMap(lookup);
-    }
+        return Collections.unmodifiableMap(lookup); }
 }
