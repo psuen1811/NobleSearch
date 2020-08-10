@@ -1,5 +1,6 @@
 package com.pakfortune;
 
+@SuppressWarnings("NonAsciiCharacters")
 public enum Horse {
     寅午戌 {
         @Override

@@ -2,7 +2,7 @@ package com.pakfortune;
 
 import java.util.*;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "NonAsciiCharacters"})
 public enum SixtyJiaziTable {
     甲子, 乙丑, 丙寅, 丁卯, 戊辰, 己巳, 庚午, 辛未, 壬申, 癸酉,
     甲戌, 乙亥, 丙子, 丁丑, 戊寅, 己卯, 庚辰, 辛巳, 壬午, 癸未,
@@ -13,11 +13,6 @@ public enum SixtyJiaziTable {
 
     private static final List<Integer> values;
 
-
-    SixtyJiaziTable() {
-
-    }
-
     static {
         values = new ArrayList<>();
         for (SixtyJiaziTable someEnum : SixtyJiaziTable.values()) {
@@ -25,7 +20,7 @@ public enum SixtyJiaziTable {
         }
     }
 
-    public static List<Integer> getSixJiaziList() {
+    protected static List<Integer> getSixJiaziList() {
         return Collections.unmodifiableList(values); }
 
     public static SixtyJiaziTable findByValue(int value) {

@@ -3,6 +3,7 @@ package com.pakfortune;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("NonAsciiCharacters")
 public enum Richman {
     甲 {
         @Override
@@ -41,7 +42,7 @@ public enum Richman {
         @Override
         List<SixtyJiaziTable> getRichmanResult(Stem stem) {
             List<SixtyJiaziTable> list = new ArrayList<>(2);
-            if( Stem.valueOf(stem.name()).equals(Stem.丁)) {
+            if (Stem.valueOf(stem.name()).equals(Stem.丁)) {
                 list.add(SixtyJiaziTable.己酉);
                 list.add(SixtyJiaziTable.辛亥);
             }

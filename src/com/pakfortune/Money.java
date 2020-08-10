@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("NonAsciiCharacters")
 public enum Money {
     甲("丙寅"),
     乙("己卯"),
@@ -24,12 +25,10 @@ public enum Money {
     }
 
     static {
-        for (Money env : values()) {
-            lookup.put(env, env.getMoneyResult());
-        }
+        for (Money env : values()) lookup.put(env, env.getMoneyResult());
     }
 
-    public String getMoneyResult() {
+    protected String getMoneyResult() {
         return this.moneyResult;
     }
 

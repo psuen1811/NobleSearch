@@ -1,5 +1,6 @@
 package com.pakfortune;
 
+@SuppressWarnings("NonAsciiCharacters")
 public enum Direction {
     中,
     乾,

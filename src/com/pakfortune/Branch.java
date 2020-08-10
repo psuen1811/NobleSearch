@@ -1,5 +1,6 @@
 package com.pakfortune;
 
+@SuppressWarnings("NonAsciiCharacters")
 public enum Branch {
     子,    // 子 (0)
     丑,    // 丑 (1)
