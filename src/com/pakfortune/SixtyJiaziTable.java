@@ -20,7 +20,7 @@ public enum SixtyJiaziTable {
         }
     }
 
-    protected static List<Integer> getSixJiaziList() {
+    public static List<Integer> getSixJiaziList() {
         return Collections.unmodifiableList(values); }
 
     public static SixtyJiaziTable findByValue(int value) {

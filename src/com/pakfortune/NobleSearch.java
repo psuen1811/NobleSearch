@@ -16,6 +16,22 @@ public class NobleSearch {
         System.out.println("---- 尋找真祿馬貴人 ----\n" + "請輸入流年干支：");
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
+        boolean stemBranchExists = false;
+        for( SixtyJiaziTable s : SixtyJiaziTable.values() ) {
+            if( input.equals( s.name() ) ) {
+                stemBranchExists = true;
+                break;
+            }
+        }
+        try {
+            if( !stemBranchExists ) {
+                throw new InputStemBranchException();
+                // exit program here or throw some exception
+            }
+        } catch (InputStemBranchException e) {
+            System.err.println(e.getMessage());
+        }
+
         circularArrayList.shiftRight(SixtyJiaziTable.valueOf(input).ordinal());
 
         // 祿
@@ -86,11 +102,12 @@ public class NobleSearch {
         // 流月貴人
         calculateMonth(inputMonth, list.get(1).name(), arrayList, circularArrayList, list.get(1).ordinal(),
                 "流月貴人");
+
     }
 
     @SuppressWarnings("rawtypes")
     public static void calculateMonth(String inputMonth, String location, ArrayList<Integer> arrayList,
-                                CircularArrayList circularArrayList, int result, String type) {
+                                      CircularArrayList circularArrayList, int result, String type) {
         int resultMonth = SixtyJiaziTable.valueOf(location).ordinal() - SixtyJiaziTable.valueOf(inputMonth).ordinal();
         if (Integer.signum(resultMonth) < 0) {
             System.out.println("今年" + type + "已過");
@@ -102,5 +119,6 @@ public class NobleSearch {
             System.out.println(type + location + "在" + Direction.findByValue((Integer) circularArrayList
                     .get(result) % MAGIC_NUMBER));
         }
+
     }
 }

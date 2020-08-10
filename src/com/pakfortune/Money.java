@@ -28,7 +28,7 @@ public enum Money {
         for (Money env : values()) lookup.put(env, env.getMoneyResult());
     }
 
-    protected String getMoneyResult() {
+    public String getMoneyResult() {
         return this.moneyResult;
     }
 
