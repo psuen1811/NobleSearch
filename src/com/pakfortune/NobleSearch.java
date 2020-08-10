@@ -142,7 +142,7 @@ public class NobleSearch {
         // Calculate the # of jumps within Direction
         int resultMonth = SixtyJiaziTable.valueOf(location).ordinal() - SixtyJiaziTable.valueOf(inputMonth).ordinal();
         if (Integer.signum(resultMonth) < 0) {
-            System.out.println("今年" + type + "已過");
+            System.out.println("今年真" + type + "已過");
         } else if (Integer.signum(resultMonth) > 0) {
             System.out.println(type + location + "在" + Direction.findByValue(arrayList.get(resultMonth)
                     % MAGIC_NUMBER));
