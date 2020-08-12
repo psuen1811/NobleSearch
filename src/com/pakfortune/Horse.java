@@ -75,13 +75,12 @@ public enum Horse {
     abstract SixtyJiaziTable checkStemBranch(String input);
 
     public static String calculate(String input) {
-        for (Branch branch : Branch.values()) {
-            if (input.contains(branch.name())) {
-                for (Horse key : Horse.values()) {
-                    if (key.name().contains(branch.name()))
-                        return key.checkStemBranch(input).toString();
-                }
-            }
+        // 取地支
+        char c = input.charAt(1);
+        String s = Character.toString(c);
+        for (Horse key : Horse.values()) {
+            if (key.name().contains(s))
+                return key.checkStemBranch(input).toString();
         }
         return null;
     }

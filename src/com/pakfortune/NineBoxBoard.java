@@ -8,7 +8,7 @@ public class NineBoxBoard {
             {' ', '|', ' ', '|', ' '}};
 
     public static void printBoard() {
-        for(char[] row : nineBoxes) {
+        for (char[] row : nineBoxes) {
             for (char c : row) {
                 System.out.print(c);
             }
@@ -26,7 +26,7 @@ public class NineBoxBoard {
 
     public static void setSixBoard(int pos, String type) {
         char c = type.charAt(0);
-        switch(pos) {
+        switch (pos) {
             case 0:
                 nineBoxes[2][2] = c;
             case 1:

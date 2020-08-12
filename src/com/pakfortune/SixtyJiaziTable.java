@@ -21,7 +21,8 @@ public enum SixtyJiaziTable {
     }
 
     public static List<Integer> getSixJiaziList() {
-        return Collections.unmodifiableList(values); }
+        return Collections.unmodifiableList(values);
+    }
 
     public static SixtyJiaziTable findByValue(int value) {
         for (SixtyJiaziTable v : values()) {

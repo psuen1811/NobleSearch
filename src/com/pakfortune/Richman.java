@@ -9,7 +9,7 @@ public enum Richman {
         @Override
         List<SixtyJiaziTable> getRichmanResult(Stem stem) {
             List<SixtyJiaziTable> list = new ArrayList<>(2);
-            if( Stem.valueOf(stem.name()).equals(Stem.甲)) {
+            if (Stem.valueOf(stem.name()).equals(Stem.甲)) {
                 list.add(SixtyJiaziTable.丁丑);
                 list.add(SixtyJiaziTable.辛未);
             }
@@ -20,7 +20,7 @@ public enum Richman {
         @Override
         List<SixtyJiaziTable> getRichmanResult(Stem stem) {
             List<SixtyJiaziTable> list = new ArrayList<>(2);
-            if( Stem.valueOf(stem.name()).equals(Stem.乙)) {
+            if (Stem.valueOf(stem.name()).equals(Stem.乙)) {
                 list.add(SixtyJiaziTable.甲申);
                 list.add(SixtyJiaziTable.戊子);
             }
@@ -31,7 +31,7 @@ public enum Richman {
         @Override
         List<SixtyJiaziTable> getRichmanResult(Stem stem) {
             List<SixtyJiaziTable> list = new ArrayList<>(2);
-            if( Stem.valueOf(stem.name()).equals(Stem.丙)) {
+            if (Stem.valueOf(stem.name()).equals(Stem.丙)) {
                 list.add(SixtyJiaziTable.丁酉);
                 list.add(SixtyJiaziTable.己亥);
             }
@@ -53,7 +53,7 @@ public enum Richman {
         @Override
         List<SixtyJiaziTable> getRichmanResult(Stem stem) {
             List<SixtyJiaziTable> list = new ArrayList<>(2);
-            if( Stem.valueOf(stem.name()).equals(Stem.戊)) {
+            if (Stem.valueOf(stem.name()).equals(Stem.戊)) {
                 list.add(SixtyJiaziTable.乙丑);
                 list.add(SixtyJiaziTable.己未);
             }
@@ -64,7 +64,7 @@ public enum Richman {
         @Override
         List<SixtyJiaziTable> getRichmanResult(Stem stem) {
             List<SixtyJiaziTable> list = new ArrayList<>(2);
-            if( Stem.valueOf(stem.name()).equals(Stem.己)) {
+            if (Stem.valueOf(stem.name()).equals(Stem.己)) {
                 list.add(SixtyJiaziTable.丙子);
                 list.add(SixtyJiaziTable.壬申);
             }
@@ -75,7 +75,7 @@ public enum Richman {
         @Override
         List<SixtyJiaziTable> getRichmanResult(Stem stem) {
             List<SixtyJiaziTable> list = new ArrayList<>(2);
-            if( Stem.valueOf(stem.name()).equals(Stem.庚)) {
+            if (Stem.valueOf(stem.name()).equals(Stem.庚)) {
                 list.add(SixtyJiaziTable.己丑);
                 list.add(SixtyJiaziTable.癸未);
             }
@@ -86,7 +86,7 @@ public enum Richman {
         @Override
         List<SixtyJiaziTable> getRichmanResult(Stem stem) {
             List<SixtyJiaziTable> list = new ArrayList<>(2);
-            if( Stem.valueOf(stem.name()).equals(Stem.辛)) {
+            if (Stem.valueOf(stem.name()).equals(Stem.辛)) {
                 list.add(SixtyJiaziTable.甲午);
                 list.add(SixtyJiaziTable.庚寅);
             }
@@ -97,7 +97,7 @@ public enum Richman {
         @Override
         List<SixtyJiaziTable> getRichmanResult(Stem stem) {
             List<SixtyJiaziTable> list = new ArrayList<>(2);
-            if( Stem.valueOf(stem.name()).equals(Stem.壬)) {
+            if (Stem.valueOf(stem.name()).equals(Stem.壬)) {
                 list.add(SixtyJiaziTable.乙巳);
                 list.add(SixtyJiaziTable.癸卯);
             }
@@ -108,7 +108,7 @@ public enum Richman {
         @Override
         List<SixtyJiaziTable> getRichmanResult(Stem stem) {
             List<SixtyJiaziTable> list = new ArrayList<>(2);
-            if( Stem.valueOf(stem.name()).equals(Stem.癸)) {
+            if (Stem.valueOf(stem.name()).equals(Stem.癸)) {
                 list.add(SixtyJiaziTable.乙卯);
                 list.add(SixtyJiaziTable.丁巳);
             }
