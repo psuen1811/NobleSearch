@@ -47,13 +47,13 @@ public class NobleSearch {
                     printOutputGraph(horseIndex);
 
                     // 真貴人干支
-                    List<SixtyJiaziTable> list = Richman.calculate(input);
+                    List<String> list = Richman.calculate(input);
                     // 貴人1
                     int richManIndex1 = (Integer) circularArrayList.get(SixtyJiaziTable.valueOf(Objects
-                            .requireNonNull(list).get(0).name()).ordinal()) % MAGIC_NUMBER;
+                            .requireNonNull(list).get(0)).ordinal()) % MAGIC_NUMBER;
                     // 貴人2
                     int richManIndex2 = (Integer) circularArrayList.get(SixtyJiaziTable.valueOf(Objects
-                            .requireNonNull(list).get(1).name()).ordinal()) % MAGIC_NUMBER;
+                            .requireNonNull(list).get(1)).ordinal()) % MAGIC_NUMBER;
                     System.out.println("貴人：\t" + list.get(0) + "在" + Direction.findByValue(richManIndex1));
                     System.out.println("貴人：\t" + list.get(1) + "在" + Direction.findByValue(richManIndex2));
 
@@ -85,12 +85,12 @@ public class NobleSearch {
                                         circularArrayList, horseStemBranch, "馬");
 
                                 // 流月貴人
-                                calculateMonth(inputMonth, list.get(0).name(), arrayList, circularArrayList,
-                                        list.get(0).ordinal(),
+                                calculateMonth(inputMonth, list.get(0), arrayList, circularArrayList,
+                                        SixtyJiaziTable.valueOf(list.get(0)).ordinal(),
                                         "貴");
                                 // 流月貴人
-                                calculateMonth(inputMonth, list.get(1).name(), arrayList, circularArrayList,
-                                        list.get(1).ordinal(),
+                                calculateMonth(inputMonth, list.get(1), arrayList, circularArrayList,
+                                        SixtyJiaziTable.valueOf(list.get(1)).ordinal(),
                                         "貴");
                             }
                         } catch (InputStemBranchException e) {

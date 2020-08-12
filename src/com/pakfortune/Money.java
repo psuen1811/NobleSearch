@@ -1,6 +1,6 @@
 package com.pakfortune;
 
-@SuppressWarnings("NonAsciiCharacters")
+@SuppressWarnings({"NonAsciiCharacters", "unused"})
 public enum Money {
     甲("丙寅"),
     乙("己卯"),
