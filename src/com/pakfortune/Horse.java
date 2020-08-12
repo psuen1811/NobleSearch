@@ -1,6 +1,6 @@
 package com.pakfortune;
 
-import java.util.Objects;
+import com.google.common.base.Preconditions;
 
 @SuppressWarnings("NonAsciiCharacters")
 public enum Horse {
@@ -84,8 +84,9 @@ public enum Horse {
                 s = branch.name();
         }
         for (Horse key : Horse.values()) {
-            if (key.name().contains(Objects.requireNonNull(s)))
+            if (key.name().contains(Preconditions.checkNotNull(s))) {
                 return key.checkStemBranch(input).toString();
+            }
         }
         return null;
     }
