@@ -120,8 +120,11 @@ public enum Richman {
 
     public static List<SixtyJiaziTable> calculate(String input) {
         // 取天干
-        char c = input.charAt(0);
-        String s = Character.toString(c);
+        String s = null;
+        for( Stem stem : Stem.values()) {
+            if( input.contains(stem.name()) )
+                s = stem.name();
+        }
         for (Richman richman : Richman.values()) {
             if (richman.name().equals(s))
                 return richman.getRichmanResult(Stem.valueOf(s));

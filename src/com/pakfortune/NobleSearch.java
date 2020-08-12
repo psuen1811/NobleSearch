@@ -18,12 +18,13 @@ public class NobleSearch {
                 System.out.println("---- 尋找真祿馬貴人 ----\n" + "請輸入流年干支：");
                 scanner = new Scanner(System.in);
                 input = scanner.nextLine();
-                stemBranchExists = SixtyJiaziTable.ifStemBranchInputExist(SixtyJiaziTable.class, input);
+                stemBranchExists = SixtyJiaziTable.ifStemBranchInputExists(SixtyJiaziTable.class, input);
 
                 if (!stemBranchExists) {
                     throw new InputStemBranchException();
                     // exit program here or throw some exception
                 } else {
+                    // 飛遁六十甲子
                     circularArrayList.shiftRight(SixtyJiaziTable.valueOf(input).ordinal());
 
                     // 真祿干支
@@ -69,7 +70,7 @@ public class NobleSearch {
                             System.out.println("\n請輸入流月干支：");
                             scannerMonth = new Scanner(System.in);
                             inputMonth = scannerMonth.nextLine();
-                            stemBranchExists = SixtyJiaziTable.ifStemBranchInputExist(SixtyJiaziTable.class, inputMonth);
+                            stemBranchExists = SixtyJiaziTable.ifStemBranchInputExists(SixtyJiaziTable.class, inputMonth);
 
                             if (!stemBranchExists) {
                                 throw new InputStemBranchException();
@@ -111,7 +112,7 @@ public class NobleSearch {
         // Calculate the # of jumps within Direction
         int resultMonth = SixtyJiaziTable.valueOf(location).ordinal() - SixtyJiaziTable.valueOf(inputMonth).ordinal();
         // 負數即月份已過
-        if (Integer.signum(resultMonth) < 0) System.out.println("今年真" + type + "已過");
+        if (Integer.signum(resultMonth) < 0) System.out.println("流月真" + type + "已過");
         else {
             if (Integer.signum(resultMonth) > 0) {
                 index = arrayList.get(resultMonth) % MAGIC_NUMBER;
@@ -120,7 +121,7 @@ public class NobleSearch {
                 index = (Integer) circularArrayList.get(result) % MAGIC_NUMBER;
 
             }
-            System.out.println(type + location + "在" + Direction.findByValue(index));
+            System.out.println(type + ": \t" + location + "在" + Direction.findByValue(index));
             printOutputGraph(index);
         }
     }

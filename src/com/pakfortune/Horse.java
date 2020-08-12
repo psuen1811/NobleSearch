@@ -1,5 +1,7 @@
 package com.pakfortune;
 
+import java.util.Objects;
+
 @SuppressWarnings("NonAsciiCharacters")
 public enum Horse {
     寅午戌 {
@@ -76,10 +78,13 @@ public enum Horse {
 
     public static String calculate(String input) {
         // 取地支
-        char c = input.charAt(1);
-        String s = Character.toString(c);
+        String s = null;
+        for (Branch branch : Branch.values()) {
+            if( input.contains(branch.name()) )
+                s = branch.name();
+        }
         for (Horse key : Horse.values()) {
-            if (key.name().contains(s))
+            if (key.name().contains(Objects.requireNonNull(s)))
                 return key.checkStemBranch(input).toString();
         }
         return null;

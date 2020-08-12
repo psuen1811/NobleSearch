@@ -1,9 +1,5 @@
 package com.pakfortune;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
 @SuppressWarnings("NonAsciiCharacters")
 public enum Money {
     甲("丙寅"),
@@ -18,29 +14,24 @@ public enum Money {
     癸("甲子");
 
     private final String moneyResult;
-    private static final Map<Money, String> lookup = new HashMap<>();
 
     Money(String moneyResult) {
         this.moneyResult = moneyResult;
-    }
-
-    static {
-        for (Money env : values()) lookup.put(env, env.getMoneyResult());
     }
 
     public String getMoneyResult() {
         return this.moneyResult;
     }
 
-    private static Map<Money, String> getLookup() {
-        return Collections.unmodifiableMap(lookup);
-    }
-
     public static String calculate(String input) {
-        Map<Money, String> money = getLookup();
-        for (Money key : money.keySet()) {
-            if (input.contains(key.name()))
+        // 取天干
+        String s;
+        for( Stem stem : Stem.values() ) {
+            if( input.contains(stem.name()) ) {
+                s = stem.name();
+                Money key = Money.valueOf(s);
                 return key.getMoneyResult();
+            }
         }
         return null;
     }

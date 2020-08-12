@@ -33,7 +33,7 @@ public enum SixtyJiaziTable {
         return null;
     }
 
-    public static <E extends Enum<E>> boolean ifStemBranchInputExist(Class<E> _enumClass, String value) {
+    public static <E extends Enum<E>> boolean ifStemBranchInputExists(Class<E> _enumClass, String value) {
         try {
             return EnumSet.allOf(_enumClass).contains(Enum.valueOf(_enumClass, value));
         } catch (Exception e) {
