@@ -1,9 +1,6 @@
 package com.pakfortune;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class NobleSearch {
 
@@ -29,59 +26,37 @@ public class NobleSearch {
                 } else {
                     circularArrayList.shiftRight(SixtyJiaziTable.valueOf(input).ordinal());
 
-                    // 祿
-                    int moneyResult = 0;
-                    String moneyLocation = "";
-                    Map<Money, String> money = Money.getLookup();
-                    for (Money key : money.keySet()) {
-                        if (input.contains(key.name())) {
-                            moneyLocation = key.getMoneyResult();
-                            moneyResult = SixtyJiaziTable.valueOf(moneyLocation).ordinal();
-                            break;
-                        }
-                    }
+                    // 真祿干支
+                    String moneyLocation = Money.calculate(input);
+                    int moneyResult = SixtyJiaziTable.valueOf(moneyLocation).ordinal();
+                    // 真祿飛度序數
+                    int moneyIndex = (Integer)circularArrayList.get(moneyResult) % MAGIC_NUMBER;
+                    // 真祿飛度方向
+                    System.out.println("祿：\t" + moneyLocation + "在" + Direction.findByValue(moneyIndex));
+                    printOutputGraph(moneyIndex, "祿");
 
-                    System.out.println("祿：\t" + moneyLocation + "在" + Direction.findByValue((Integer)
-                            circularArrayList.get(moneyResult) % MAGIC_NUMBER));
+                    // 真馬干支
+                    SixtyJiaziTable stemBranch = Horse.calculate(input);
+                    int horseStemBranch = Objects.requireNonNull(stemBranch).ordinal();
+                    // 真馬飛度序數
+                    int horseIndex = (Integer) circularArrayList.get(horseStemBranch) % MAGIC_NUMBER;
+                    // 真馬飛度方向
+                    System.out.println("馬：\t" + stemBranch.name() + "在" + Direction.findByValue(horseIndex));
+                    printOutputGraph(horseIndex, "馬");
 
-                    // 馬
-                    SixtyJiaziTable stemBranch = null;
-                    int horseStemBranch = 0;
-                    for (Branch branch : Branch.values()) {
-                        if (input.contains(branch.name())) {
-                            for (Horse key : Horse.values()) {
-                                if (key.name().contains(branch.name())) {
-                                    stemBranch = key.checkStemBranch(input);
-                                    horseStemBranch = stemBranch.ordinal();
-                                    break;
-                                }
-                            }
-                            break;
-                        }
-                    }
-                    assert stemBranch != null;
-                    System.out.println("馬：\t" + stemBranch.name() + "在" + Direction.findByValue((Integer)
-                            circularArrayList
-                            .get(horseStemBranch) % MAGIC_NUMBER));
+                    // 真貴人干支
+                    List<SixtyJiaziTable> list = Richman.calculate(input);
+                    // 貴人1
+                    int richManIndex1 = (Integer) circularArrayList.get(SixtyJiaziTable.valueOf(Objects
+                            .requireNonNull(list).get(0).name()).ordinal()) % MAGIC_NUMBER;
+                    // 貴人2
+                    int richManIndex2 = (Integer) circularArrayList.get(SixtyJiaziTable.valueOf(Objects
+                            .requireNonNull(list).get(1).name()).ordinal()) % MAGIC_NUMBER;
+                    System.out.println("貴人：\t" + list.get(0) + "在" + Direction.findByValue(richManIndex1));
+                    System.out.println("貴人：\t" + list.get(1) + "在" + Direction.findByValue(richManIndex2));
 
-                    // 貴人
-                    List<SixtyJiaziTable> list = null;
-                    for (Stem stem : Stem.values()) {
-                        if (input.contains(stem.name())) {
-                            for (Richman richman : Richman.values()) {
-                                if (stem.name().equals(richman.name())) {
-                                    list = richman.getRichmanResult(stem);
-                                    break;
-                                }
-                            }
-                            break;
-                        }
-                    }
-                    assert list != null;
-                    System.out.println("貴人：\t" + list.get(0) + "在" + Direction.findByValue((Integer) circularArrayList
-                            .get(SixtyJiaziTable.valueOf(list.get(0).name()).ordinal()) % MAGIC_NUMBER));
-                    System.out.println("貴人：\t" + list.get(1) + "在" + Direction.findByValue((Integer) circularArrayList
-                            .get(SixtyJiaziTable.valueOf(list.get(1).name()).ordinal()) % MAGIC_NUMBER));
+                    printOutputGraph(richManIndex1, "貴");
+                    printOutputGraph(richManIndex2, "貴");
 
                     stemBranchExists = false;
                     // 當年月份
@@ -90,7 +65,7 @@ public class NobleSearch {
                     while (!stemBranchExists) {
                         try {
 
-                            System.out.println("請輸入流月干支：");
+                            System.out.println("\n請輸入流月干支：");
                             scannerMonth = new Scanner(System.in);
                             inputMonth = scannerMonth.nextLine();
                             stemBranchExists = checkStemBranchInput(inputMonth);
@@ -101,19 +76,21 @@ public class NobleSearch {
                             } else {
                                 // 流月祿
                                 calculateMonth(inputMonth, moneyLocation, arrayList, circularArrayList, moneyResult,
-                                        "流月祿");
+                                        "祿");
+
                                 // 流月馬
                                 calculateMonth(inputMonth, stemBranch.name(), arrayList, circularArrayList,
                                         horseStemBranch,
-                                        "流月馬");
+                                        "馬");
+
                                 // 流月貴人
                                 calculateMonth(inputMonth, list.get(0).name(), arrayList, circularArrayList,
                                         list.get(0).ordinal(),
-                                        "流月貴人");
+                                        "貴");
                                 // 流月貴人
                                 calculateMonth(inputMonth, list.get(1).name(), arrayList, circularArrayList,
                                         list.get(1).ordinal(),
-                                        "流月貴人");
+                                        "貴");
                             }
                         } catch (InputStemBranchException e) {
                             System.err.println(e.getMessage());
@@ -139,17 +116,30 @@ public class NobleSearch {
     @SuppressWarnings("rawtypes")
     private static void calculateMonth(String inputMonth, String location, ArrayList<Integer> arrayList,
                                       CircularArrayList circularArrayList, int result, String type) {
+        int index;
         // Calculate the # of jumps within Direction
         int resultMonth = SixtyJiaziTable.valueOf(location).ordinal() - SixtyJiaziTable.valueOf(inputMonth).ordinal();
         if (Integer.signum(resultMonth) < 0) {
             System.out.println("今年真" + type + "已過");
         } else if (Integer.signum(resultMonth) > 0) {
-            System.out.println(type + location + "在" + Direction.findByValue(arrayList.get(resultMonth)
-                    % MAGIC_NUMBER));
+            index = arrayList.get(resultMonth) % MAGIC_NUMBER;
+            System.out.println(type + location + "在" + Direction.findByValue(index));
+            printOutputGraph(index, type);
         } else {
             // 不變
-            System.out.println(type + location + "在" + Direction.findByValue((Integer) circularArrayList
-                    .get(result) % MAGIC_NUMBER));
+            index = (Integer) circularArrayList.get(result) % MAGIC_NUMBER;
+            System.out.println(type + location + "在" + Direction.findByValue(index));
+            printOutputGraph(index, type);
+
         }
     }
+
+    private static void printOutputGraph(int index, String type) {
+        NineBoxBoard.setSixBoard(index, type);
+        System.out.println();
+        NineBoxBoard.printBoard();
+        System.out.println();
+        NineBoxBoard.clearBoard();
+    }
+
 }

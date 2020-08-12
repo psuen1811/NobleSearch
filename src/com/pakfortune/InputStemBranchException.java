@@ -5,6 +5,7 @@ public class InputStemBranchException extends Exception {
         super("請用繁體填寫正確干支。。。");
     }
 
+    @SuppressWarnings("unused")
     public InputStemBranchException(String message) {
         super(message);
     }

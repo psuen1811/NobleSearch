@@ -32,6 +32,16 @@ public enum Money {
         return this.moneyResult;
     }
 
-    public static Map<Money, String> getLookup() {
-        return Collections.unmodifiableMap(lookup); }
+    private static Map<Money, String> getLookup() {
+        return Collections.unmodifiableMap(lookup);
+    }
+
+    public static String calculate(String input) {
+        Map<Money, String> money = getLookup();
+        for (Money key : money.keySet()) {
+            if (input.contains(key.name()))
+                return key.getMoneyResult();
+        }
+        return null;
+    }
 }

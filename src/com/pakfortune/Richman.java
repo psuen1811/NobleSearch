@@ -117,4 +117,16 @@ public enum Richman {
     };
 
     abstract List<SixtyJiaziTable> getRichmanResult(Stem stem);
+
+    public static List<SixtyJiaziTable> calculate(String input) {
+        for (Stem stem : Stem.values()) {
+            if (input.contains(stem.name())) {
+                for (Richman richman : Richman.values()) {
+                    if (stem.name().equals(richman.name()))
+                        return richman.getRichmanResult(stem);
+                }
+            }
+        }
+        return null;
+    }
 }
