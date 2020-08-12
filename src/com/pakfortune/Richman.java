@@ -1,5 +1,6 @@
 package com.pakfortune;
 
+import com.google.common.base.Preconditions;
 import com.google.common.collect.ArrayListMultimap;
 import java.util.List;
 
@@ -39,9 +40,7 @@ public enum Richman {
                 s = stem.name();
         }
         for( String stem : list.keySet() ) {
-            if( stem.equals(s) ) {
-                return list.get(s);
-            }
+            if( stem.equals(Preconditions.checkNotNull(s)) ) return list.get(s);
         }
         return null;
     }
