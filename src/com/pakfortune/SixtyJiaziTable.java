@@ -32,12 +32,11 @@ public enum SixtyJiaziTable {
         return null;
     }
 
-    public static boolean checkStemBranchInput(String inputMonth) {
-        for( SixtyJiaziTable s : SixtyJiaziTable.values() ) {
-            if( inputMonth.equals( s.name() ) )
-                return true;
+    public static <E extends Enum<E>> boolean ifStemBranchInputExist(Class<E> _enumClass, String value) {
+        try {
+            return EnumSet.allOf(_enumClass).contains(Enum.valueOf(_enumClass, value));
+        } catch (Exception e) {
+            return false;
         }
-        return false;
-
     }
 }

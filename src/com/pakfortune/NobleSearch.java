@@ -18,7 +18,7 @@ public class NobleSearch {
                 System.out.println("---- 尋找真祿馬貴人 ----\n" + "請輸入流年干支：");
                 scanner = new Scanner(System.in);
                 input = scanner.nextLine();
-                stemBranchExists = SixtyJiaziTable.checkStemBranchInput(input);
+                stemBranchExists = SixtyJiaziTable.ifStemBranchInputExist(SixtyJiaziTable.class, input);
 
                 if (!stemBranchExists) {
                     throw new InputStemBranchException();
@@ -69,7 +69,7 @@ public class NobleSearch {
                             System.out.println("\n請輸入流月干支：");
                             scannerMonth = new Scanner(System.in);
                             inputMonth = scannerMonth.nextLine();
-                            stemBranchExists = SixtyJiaziTable.checkStemBranchInput(inputMonth);
+                            stemBranchExists = SixtyJiaziTable.ifStemBranchInputExist(SixtyJiaziTable.class, inputMonth);
 
                             if (!stemBranchExists) {
                                 throw new InputStemBranchException();
