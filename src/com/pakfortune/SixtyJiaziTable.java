@@ -32,5 +32,12 @@ public enum SixtyJiaziTable {
         return null;
     }
 
+    public static boolean checkStemBranchInput(String inputMonth) {
+        for( SixtyJiaziTable s : SixtyJiaziTable.values() ) {
+            if( inputMonth.equals( s.name() ) )
+                return true;
+        }
+        return false;
 
+    }
 }

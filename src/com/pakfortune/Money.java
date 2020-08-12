@@ -19,7 +19,6 @@ public enum Money {
 
     private final String moneyResult;
     private static final Map<Money, String> lookup = new HashMap<>();
-
     Money(String moneyResult) {
         this.moneyResult = moneyResult;
     }

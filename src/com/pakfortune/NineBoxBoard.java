@@ -16,7 +16,7 @@ public class NineBoxBoard {
         }
     }
 
-    public static void clearBoard() {
+    public static void resetNineBoard() {
         nineBoxes = new char[][]{{' ', '|', ' ', '|', ' '},
                 {'-', '+', '-', '+', '-'},
                 {' ', '|', ' ', '|', ' '},
