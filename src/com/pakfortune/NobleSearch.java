@@ -1,5 +1,7 @@
 package com.pakfortune;
 
+import com.google.common.base.Preconditions;
+
 import java.util.*;
 
 public class NobleSearch {
@@ -49,11 +51,11 @@ public class NobleSearch {
                     // 真貴人干支
                     List<String> list = Richman.calculate(input);
                     // 貴人1
-                    int richManIndex1 = (Integer) circularArrayList.get(SixtyJiaziTable.valueOf(Objects
-                            .requireNonNull(list).get(0)).ordinal()) % MAGIC_NUMBER;
+                    int richManIndex1 = (Integer) circularArrayList.get(SixtyJiaziTable.valueOf(Preconditions
+                            .checkNotNull(list).get(0)).ordinal()) % MAGIC_NUMBER;
                     // 貴人2
-                    int richManIndex2 = (Integer) circularArrayList.get(SixtyJiaziTable.valueOf(Objects
-                            .requireNonNull(list).get(1)).ordinal()) % MAGIC_NUMBER;
+                    int richManIndex2 = (Integer) circularArrayList.get(SixtyJiaziTable.valueOf(Preconditions
+                            .checkNotNull(list).get(1)).ordinal()) % MAGIC_NUMBER;
                     System.out.println("貴人：\t" + list.get(0) + "在" + Direction.findByValue(richManIndex1));
                     System.out.println("貴人：\t" + list.get(1) + "在" + Direction.findByValue(richManIndex2));
 
