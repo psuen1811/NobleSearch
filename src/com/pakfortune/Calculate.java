@@ -64,22 +64,25 @@ public class Calculate {
     private static <T extends Enum<T>> void searchMoneyHorse(Class<T> enumKey) {
         int tempInt = 0;
         String tempStr = null;
+        String name = null;
         // 真祿馬干支 & 飛度序數
         if (enumKey == Money.class) {
             moneyLocation = Money.calculate(input);
             tempStr = moneyLocation;
             moneyResult = SixtyJiaziTable.valueOf(moneyLocation).ordinal();
             tempInt = moneyResult;
+            name = "祿: \t";
         }
         else if (enumKey == Horse.class) {
             horseLocation = Horse.calculate(input);
             tempStr = horseLocation;
             horseResult = SixtyJiaziTable.valueOf(horseLocation).ordinal();
             tempInt = horseResult;
+            name = "馬: \t";
         }
         int index = (Integer) circularArrayList.get(tempInt) % MAGIC_NUMBER;
         // 真祿/馬飛度方向
-        System.out.println("祿：\t" + tempStr + "在" + Direction.findByValue(index));
+        System.out.println(name + tempStr + "在" + Direction.findByValue(index));
         printOutputGraph(index);
     }
 

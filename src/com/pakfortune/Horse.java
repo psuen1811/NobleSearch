@@ -76,7 +76,7 @@ public enum Horse {
 
     abstract SixtyJiaziTable checkStemBranch(String input);
 
-    public static String calculate(String input) {
+    protected static String calculate(String input) {
         // 取地支
         String s = null;
         for (Branch branch : Branch.values()) {
