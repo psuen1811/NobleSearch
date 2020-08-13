@@ -21,6 +21,35 @@ public class Calculate {
         circularArrayList = new CircularArrayList<>(arrayList);
     }
 
+    public static void getYearlyResult() {
+        Scanner scanner;
+        boolean stemBranchExists = false;
+        while (!stemBranchExists) {
+            try {
+                System.out.println("---- 尋找真祿馬貴人 ----\n" + "請輸入流年干支：");
+                scanner = new Scanner(System.in);
+                input = scanner.nextLine();
+                stemBranchExists = SixtyJiaziTable.ifStemBranchInputExists(SixtyJiaziTable.class, input);
+
+                if (!stemBranchExists) {
+                    throw new InputStemBranchException();
+                    // exit program here or throw some exception
+                } else {
+                    // 飛遁六十甲子
+                    circularArrayList.shiftRight(SixtyJiaziTable.valueOf(input).ordinal());
+                    // 找真祿干支
+                    searchMoneyHorse(Money.class);
+                    // 找真馬干支
+                    searchMoneyHorse(Horse.class);
+                    // 找貴人干支
+                    searchRichman();
+                }
+            } catch (InputStemBranchException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+    }
+
     public static void getMonthlyResult(final ArrayList<Integer> arrayList ) {
         boolean stemBranchExists = false;
         // 當年月份
@@ -28,7 +57,6 @@ public class Calculate {
         String inputMonth;
         while (!stemBranchExists) {
             try {
-
                 System.out.println("\n請輸入流月干支：");
                 scannerMonth = new Scanner(System.in);
                 inputMonth = scannerMonth.nextLine();
@@ -65,7 +93,9 @@ public class Calculate {
         int tempInt = 0;
         String tempStr = null;
         String name = null;
-        // 真祿馬干支 & 飛度序數
+        /**
+         * 真祿馬干支 & 飛度序數
+         */
         if (enumKey == Money.class) {
             moneyLocation = Money.calculate(input);
             tempStr = moneyLocation;
@@ -87,7 +117,9 @@ public class Calculate {
     }
 
     private static void searchRichman() {
-        // 真貴人干支
+        /**
+         * 真貴人干支
+         */
         list = Richman.calculate(input);
         // 貴人1
         int richManIndex1 = (Integer) circularArrayList.get(SixtyJiaziTable.valueOf(Preconditions
@@ -100,35 +132,6 @@ public class Calculate {
 
         printOutputGraph(richManIndex1);
         printOutputGraph(richManIndex2);
-    }
-
-    public static void getYearlyResult() {
-        Scanner scanner;
-        boolean stemBranchExists = false;
-        while (!stemBranchExists) {
-            try {
-                System.out.println("---- 尋找真祿馬貴人 ----\n" + "請輸入流年干支：");
-                scanner = new Scanner(System.in);
-                input = scanner.nextLine();
-                stemBranchExists = SixtyJiaziTable.ifStemBranchInputExists(SixtyJiaziTable.class, input);
-
-                if (!stemBranchExists) {
-                    throw new InputStemBranchException();
-                    // exit program here or throw some exception
-                } else {
-                    // 飛遁六十甲子
-                    circularArrayList.shiftRight(SixtyJiaziTable.valueOf(input).ordinal());
-                    // 找真祿干支
-                    searchMoneyHorse(Money.class);
-                    // 找真馬干支
-                    searchMoneyHorse(Horse.class);
-                    // 找貴人干支
-                    searchRichman();
-                }
-            } catch (InputStemBranchException e) {
-                System.err.println(e.getMessage());
-            }
-        }
     }
 
     @SuppressWarnings("rawtypes")
