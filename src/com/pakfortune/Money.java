@@ -23,7 +23,7 @@ public enum Money {
         return this.moneyResult;
     }
 
-    public static String calculate(String input) {
+    protected static String calculate(String input) {
         // 取天干
         String s;
         for( Stem stem : Stem.values() ) {
