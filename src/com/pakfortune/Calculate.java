@@ -111,7 +111,7 @@ public class Calculate {
             name = "馬: \t";
         }
         int index = (Integer) circularArrayList.get(tempInt) % MAGIC_NUMBER;
-        // 真祿/馬飛度方向
+        // 真祿馬飛度方向
         System.out.println(name + tempStr + "在" + Direction.findByValue(index));
         printOutputGraph(index);
     }
