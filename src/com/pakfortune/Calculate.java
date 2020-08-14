@@ -77,14 +77,11 @@ public class Calculate {
                     calculatePrintMonth(inputMonth, SixtyJiaziTable.valueOf(horseLocation).name(), arrayList,
                             circularArrayList, horseResult, "馬");
 
-                    // 流月貴人
-                    calculatePrintMonth(inputMonth, list.get(0), arrayList, circularArrayList,
-                            SixtyJiaziTable.valueOf(list.get(0)).ordinal(),
-                            "貴");
-                    // 流月貴人
-                    calculatePrintMonth(inputMonth, list.get(1), arrayList, circularArrayList,
-                            SixtyJiaziTable.valueOf(list.get(1)).ordinal(),
-                            "貴");
+                    // 流月二貴人
+                    for (String s : list)
+                        calculatePrintMonth(inputMonth, s, arrayList, circularArrayList,
+                                SixtyJiaziTable.valueOf(s).ordinal(),
+                                "貴");
                 }
             } catch (InputStemBranchException e) {
                 System.err.println(e.getMessage());
