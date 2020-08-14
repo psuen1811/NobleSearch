@@ -39,11 +39,13 @@ public class Calculate {
                     // 根據輸入干支飛遁六十甲子
                     circularArrayList.shiftRight(SixtyJiaziTable.valueOf(input).ordinal());
                     // 找真祿干支
-                    searchMoneyHorse(Money.class);
+                    moneyLocation = Money.calculate(input);
+                    moneyResult = searchPrintMoneyHorse(moneyLocation, "真祿: \t");
                     // 找真馬干支
-                    searchMoneyHorse(Horse.class);
+                    horseLocation = Horse.calculate(input);
+                    horseResult = searchPrintMoneyHorse(horseLocation, "真馬: \t");
                     // 找貴人干支
-                    searchRichman();
+                    searchPrintRichman();
                 }
             } catch (InputStemBranchException e) {
                 System.err.println(e.getMessage());
@@ -68,19 +70,19 @@ public class Calculate {
                     // exit program here or throw some exception
                 } else {
                     // 流月祿
-                    calculateMonth(inputMonth, moneyLocation, arrayList, circularArrayList, moneyResult,
+                    calculatePrintMonth(inputMonth, moneyLocation, arrayList, circularArrayList, moneyResult,
                             "祿");
 
                     // 流月馬
-                    calculateMonth(inputMonth, SixtyJiaziTable.valueOf(horseLocation).name(), arrayList,
+                    calculatePrintMonth(inputMonth, SixtyJiaziTable.valueOf(horseLocation).name(), arrayList,
                             circularArrayList, horseResult, "馬");
 
                     // 流月貴人
-                    calculateMonth(inputMonth, list.get(0), arrayList, circularArrayList,
+                    calculatePrintMonth(inputMonth, list.get(0), arrayList, circularArrayList,
                             SixtyJiaziTable.valueOf(list.get(0)).ordinal(),
                             "貴");
                     // 流月貴人
-                    calculateMonth(inputMonth, list.get(1), arrayList, circularArrayList,
+                    calculatePrintMonth(inputMonth, list.get(1), arrayList, circularArrayList,
                             SixtyJiaziTable.valueOf(list.get(1)).ordinal(),
                             "貴");
                 }
@@ -90,36 +92,22 @@ public class Calculate {
         }
     }
 
-    private static <T extends Enum<T>> void searchMoneyHorse(Class<T> enumKey) {
-        int tempInt = 0;
-        String tempStr = null;
-        String name = null;
+    private int searchPrintMoneyHorse(String location, String type) {
+        int temp;
         /*
           真祿馬干支 & 飛度序數
          */
-        if (enumKey == Money.class) {
-            moneyLocation = Money.calculate(input);
-            tempStr = moneyLocation;
-            moneyResult = SixtyJiaziTable.valueOf(moneyLocation).ordinal();
-            tempInt = moneyResult;
-            name = "祿: \t";
-        }
-        else if (enumKey == Horse.class) {
-            horseLocation = Horse.calculate(input);
-            tempStr = horseLocation;
-            horseResult = SixtyJiaziTable.valueOf(horseLocation).ordinal();
-            tempInt = horseResult;
-            name = "馬: \t";
-        }
-        int index = (Integer) circularArrayList.get(tempInt) % MAGIC_NUMBER;
+        temp = SixtyJiaziTable.valueOf(location).ordinal();
+        int index = (Integer) circularArrayList.get(temp) % MAGIC_NUMBER;
         // 真祿馬飛度方向
-        System.out.println(name + tempStr + "在" + Direction.findByValue(index));
+        System.out.println(type + location + "在" + Direction.findByValue(index));
 
         // 印位圖
         printOutputGraph(index);
+        return temp;
     }
 
-    private static void searchRichman() {
+    private static void searchPrintRichman() {
         /*
           真貴人干支
          */
@@ -139,8 +127,8 @@ public class Calculate {
     }
 
     @SuppressWarnings("rawtypes")
-    private static void calculateMonth(String inputMonth, String location, ArrayList<Integer> arrayList,
-                                       CircularArrayList circularArrayList, int result, String type) {
+    private static void calculatePrintMonth(String inputMonth, String location, ArrayList<Integer> arrayList,
+                                            CircularArrayList circularArrayList, int result, String type) {
         int index;
         // Calculate the # of jumps within Direction
         int resultMonth = SixtyJiaziTable.valueOf(location).ordinal() - SixtyJiaziTable.valueOf(inputMonth).ordinal();
