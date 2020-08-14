@@ -14,6 +14,7 @@ public class Calculate {
     private static String horseLocation;
     private static int horseResult;
     private static List<String> list;
+
     @SuppressWarnings("rawtypes")
     private static CircularArrayList circularArrayList;
 
@@ -21,7 +22,7 @@ public class Calculate {
         circularArrayList = new CircularArrayList<>(arrayList);
     }
 
-    public static void getYearlyResult() {
+    public void getYearlyResult() {
         Scanner scanner;
         boolean stemBranchExists = false;
         while (!stemBranchExists) {
@@ -35,7 +36,7 @@ public class Calculate {
                     throw new InputStemBranchException();
                     // exit program here or throw some exception
                 } else {
-                    // 飛遁六十甲子
+                    // 根據輸入干支飛遁六十甲子
                     circularArrayList.shiftRight(SixtyJiaziTable.valueOf(input).ordinal());
                     // 找真祿干支
                     searchMoneyHorse(Money.class);
@@ -50,7 +51,7 @@ public class Calculate {
         }
     }
 
-    public static void getMonthlyResult(final ArrayList<Integer> arrayList ) {
+    public void getMonthlyResult(final ArrayList<Integer> arrayList ) {
         boolean stemBranchExists = false;
         // 當年月份
         Scanner scannerMonth;
@@ -93,8 +94,8 @@ public class Calculate {
         int tempInt = 0;
         String tempStr = null;
         String name = null;
-        /**
-         * 真祿馬干支 & 飛度序數
+        /*
+          真祿馬干支 & 飛度序數
          */
         if (enumKey == Money.class) {
             moneyLocation = Money.calculate(input);
@@ -113,12 +114,14 @@ public class Calculate {
         int index = (Integer) circularArrayList.get(tempInt) % MAGIC_NUMBER;
         // 真祿馬飛度方向
         System.out.println(name + tempStr + "在" + Direction.findByValue(index));
+
+        // 印位圖
         printOutputGraph(index);
     }
 
     private static void searchRichman() {
-        /**
-         * 真貴人干支
+        /*
+          真貴人干支
          */
         list = Richman.calculate(input);
         // 貴人1
@@ -130,6 +133,7 @@ public class Calculate {
         System.out.println("貴人：\t" + list.get(0) + "在" + Direction.findByValue(richManIndex1));
         System.out.println("貴人：\t" + list.get(1) + "在" + Direction.findByValue(richManIndex2));
 
+        // 印位圖
         printOutputGraph(richManIndex1);
         printOutputGraph(richManIndex2);
     }
@@ -151,6 +155,8 @@ public class Calculate {
 
             }
             System.out.println(type + ": \t" + location + "在" + Direction.findByValue(index));
+
+            // 印位圖
             printOutputGraph(index);
         }
     }

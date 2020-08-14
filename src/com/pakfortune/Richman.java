@@ -5,6 +5,7 @@ import com.google.common.collect.ArrayListMultimap;
 import java.util.List;
 
 public enum Richman {
+    // empty enum
     ;
     /* use Google Guava ArrayListMultimap instead of building individual list per enum */
     private static final ArrayListMultimap<String, String> list = ArrayListMultimap.create();

@@ -1,11 +1,15 @@
 package com.pakfortune;
 
+import com.google.common.collect.Lists;
+
 import java.util.*;
 
 public class NobleSearch {
 
     public static void main(String[] arg) {
-        ArrayList<Integer> arrayList = new ArrayList<>(SixtyJiaziTable.getSixJiaziList());
+        // declare 60 "六十甲子"" by sequence
+        ArrayList<Integer> arrayList = Lists.newArrayList(SixtyJiaziTable.getSixJiaziList());
+        // initialize CircularArrayList for shifting elements purpose
         Calculate calculate = new Calculate(arrayList);
         calculate.getYearlyResult();
         calculate.getMonthlyResult(arrayList);
