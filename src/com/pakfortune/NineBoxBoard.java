@@ -57,9 +57,7 @@ public class NineBoxBoard {
     }
 
     private static void accept(char[] row) {
-        for (char c : row) {
-            System.out.print(c);
-        }
+        for (char c : row) System.out.print(c);
         System.out.println();
     }
 }
