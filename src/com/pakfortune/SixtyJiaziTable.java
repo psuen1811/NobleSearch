@@ -17,7 +17,7 @@ public enum SixtyJiaziTable {
 
     static {
         values = new ArrayList<>();
-        Arrays.stream(SixtyJiaziTable.values()).map(Enum::ordinal).forEachOrdered(values::add);
+        Arrays.stream(SixtyJiaziTable.values()).map(Enum::ordinal).forEach(values::add);
     }
 
     public static List<Integer> getSixJiaziList() {
