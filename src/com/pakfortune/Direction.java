@@ -1,5 +1,7 @@
 package com.pakfortune;
 
+import java.util.Arrays;
+
 @SuppressWarnings("NonAsciiCharacters")
 public enum Direction {
     中,
@@ -13,11 +15,6 @@ public enum Direction {
     巽;
 
     public static Direction findByValue(int value) {
-        for (Direction v : values()) {
-            if (v.ordinal() == value) {
-                return v;
-            }
-        }
-        return null;
+        return Arrays.stream(values()).filter(v -> v.ordinal() == value).findFirst().orElse(null);
     }
 }

@@ -79,15 +79,11 @@ public enum Horse {
     protected static String calculate(String input) {
         // 取地支
         String s = null;
-        for (Branch branch : Branch.values()) {
-            if( input.contains(branch.name()) )
+        for (Branch branch : Branch.values())
+            if (input.contains(branch.name()))
                 s = branch.name();
-        }
-        for (Horse key : Horse.values()) {
-            if (key.name().contains(Preconditions.checkNotNull(s))) {
-                return key.checkStemBranch(input).toString();
-            }
-        }
+        for (Horse key : Horse.values())
+            if (key.name().contains(Preconditions.checkNotNull(s))) return key.checkStemBranch(input).toString();
         return null;
     }
 

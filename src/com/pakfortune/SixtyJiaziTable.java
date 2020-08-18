@@ -17,9 +17,7 @@ public enum SixtyJiaziTable {
 
     static {
         values = new ArrayList<>();
-        for (SixtyJiaziTable someEnum : SixtyJiaziTable.values()) {
-            values.add(someEnum.ordinal());
-        }
+        Arrays.stream(SixtyJiaziTable.values()).map(Enum::ordinal).forEachOrdered(values::add);
     }
 
     public static List<Integer> getSixJiaziList() {
@@ -27,12 +25,7 @@ public enum SixtyJiaziTable {
     }
 
     public static SixtyJiaziTable findByValue(int value) {
-        for (SixtyJiaziTable v : values()) {
-            if (v.ordinal() == value) {
-                return v;
-            }
-        }
-        return null;
+        return Arrays.stream(values()).filter(v -> v.ordinal() == value).findFirst().orElse(null);
     }
 
     public static <E extends Enum<E>> boolean ifStemBranchInputExists(Class<E> _enumClass, String value) {

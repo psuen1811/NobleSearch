@@ -26,13 +26,12 @@ public enum Money {
     protected static String calculate(String input) {
         // 取天干
         String s;
-        for( Stem stem : Stem.values() ) {
-            if( input.contains(stem.name()) ) {
+        for (Stem stem : Stem.values())
+            if (input.contains(stem.name())) {
                 s = stem.name();
                 Money key = Money.valueOf(s);
                 return key.getMoneyResult();
             }
-        }
         return null;
     }
 }
