@@ -19,7 +19,7 @@ public class CircularArrayList<E> extends ArrayList<E> {
         super(list);
     }
 
-    public synchronized void shiftRight(int shiftSize) {
+    public void shiftRight(int shiftSize) {
         int size = this.size();
 
         Map<Integer, E> temp = new HashMap<>();
