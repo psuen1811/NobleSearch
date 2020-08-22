@@ -1,7 +1,5 @@
 package com.pakfortune;
 
-import java.util.Arrays;
-
 public class NineBoxBoard {
     private static char[][] nineBoxes = {{' ', '|', ' ', '|', ' '},
             {'-', '+', '-', '+', '-'},
@@ -10,12 +8,10 @@ public class NineBoxBoard {
             {' ', '|', ' ', '|', ' '}};
 
     public static void printBoard() {
-        Arrays.stream(nineBoxes).forEach(NineBoxBoard::accept);
-    }
-
-    private static void accept(char[] row) {
-        for (char c : row) System.out.print(c);
-        System.out.println();
+        for (char[] nineBox : nineBoxes) {
+            for (char c : nineBox) System.out.print(c);
+            System.out.println();
+        }
     }
 
     public static void resetNineBoard() {

@@ -1,7 +1,5 @@
 package com.pakfortune;
 
-import java.util.Arrays;
-
 @SuppressWarnings("NonAsciiCharacters")
 public enum Direction {
     中,

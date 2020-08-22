@@ -108,19 +108,17 @@ public class Calculate {
           真貴人干支
          */
         list = Richman.calculate(input);
-        // 貴人1
-        int richManIndex1 = (Integer) circularArrayList.get(SixtyJiaziTable.valueOf(Preconditions.checkNotNull(list)
-                .get(0)).ordinal()) % MAGIC_NUMBER;
-        // 貴人2
-        int richManIndex2 = (Integer) circularArrayList.get(SixtyJiaziTable.valueOf(Preconditions.checkNotNull(list)
-                .get(1)).ordinal()) % MAGIC_NUMBER;
-        System.out.println("貴人：\t" + list.get(0) + "在" + Direction.findByValue(richManIndex1));
-        System.out.println("貴人：\t" + list.get(1) + "在" + Direction.findByValue(richManIndex2));
-
-        // 印位圖
-        printOutputGraph(richManIndex1);
-        printOutputGraph(richManIndex2);
+        // 貴人1,2
+        int richManIndex;
+        for (int i = 0; i < 2; i++) {
+            richManIndex = (Integer) circularArrayList.get(SixtyJiaziTable.valueOf(Preconditions.checkNotNull(list)
+                    .get(i)).ordinal()) % MAGIC_NUMBER;
+            System.out.println("貴人：\t" + list.get(i) + "在" + Direction.findByValue(richManIndex));
+            // 印位圖
+            printOutputGraph(richManIndex);
+        }
     }
+
 
     @SuppressWarnings("rawtypes")
     private static void calculatePrintMonth(String inputMonth, String location, ArrayList<Integer> arrayList,

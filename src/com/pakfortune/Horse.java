@@ -2,8 +2,6 @@ package com.pakfortune;
 
 import com.google.common.base.Preconditions;
 
-import java.util.Arrays;
-
 @SuppressWarnings("NonAsciiCharacters")
 public enum Horse {
     寅午戌 {
