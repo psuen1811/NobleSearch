@@ -2,6 +2,7 @@ package com.pakfortune;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 
 import java.util.List;
@@ -38,11 +39,11 @@ public enum Richman {
     public static List<String> calculate(String input) {
         // 取天干
         String s = null;
-        for (Stem stem : Stem.values())
-            if (input.contains(stem.name()))
+        for( Stem stem : Stem.values() )
+            if( input.contains(stem.name()) )
                 s = stem.name();
-        for (String stem : ImmutableSet.copyOf(list.keySet()))
-            if (stem.equals(Preconditions.checkNotNull(s))) return list.get(s);
+        for (String stem : list.keySet())
+            if (stem.equals(Preconditions.checkNotNull(s))) return ImmutableList.copyOf(list.get(s));
         return null;
     }
 }

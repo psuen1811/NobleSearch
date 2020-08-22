@@ -15,6 +15,11 @@ public enum Direction {
     巽;
 
     public static Direction findByValue(int value) {
-        return Arrays.stream(values()).filter(v -> v.ordinal() == value).findFirst().orElse(null);
+        for (Direction v : values()) {
+            if (v.ordinal() == value) {
+                return v;
+            }
+        }
+        return null;
     }
 }

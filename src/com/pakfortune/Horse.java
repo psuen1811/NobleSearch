@@ -2,6 +2,8 @@ package com.pakfortune;
 
 import com.google.common.base.Preconditions;
 
+import java.util.Arrays;
+
 @SuppressWarnings("NonAsciiCharacters")
 public enum Horse {
     寅午戌 {
@@ -82,6 +84,7 @@ public enum Horse {
         for (Branch branch : Branch.values())
             if (input.contains(branch.name()))
                 s = branch.name();
+
         for (Horse key : Horse.values())
             if (key.name().contains(Preconditions.checkNotNull(s))) return key.checkStemBranch(input).toString();
         return null;

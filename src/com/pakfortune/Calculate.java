@@ -90,11 +90,10 @@ public class Calculate {
     }
 
     private int searchPrintMoneyHorse(String location, String type) {
-        int temp;
         /*
           真祿馬干支 & 飛度序數
          */
-        temp = SixtyJiaziTable.valueOf(location).ordinal();
+        int temp = SixtyJiaziTable.valueOf(location).ordinal();
         int index = (Integer) circularArrayList.get(temp) % MAGIC_NUMBER;
         // 真祿馬飛度方向
         System.out.println(type + location + "在" + Direction.findByValue(index));

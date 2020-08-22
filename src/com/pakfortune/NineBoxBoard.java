@@ -13,6 +13,11 @@ public class NineBoxBoard {
         Arrays.stream(nineBoxes).forEach(NineBoxBoard::accept);
     }
 
+    private static void accept(char[] row) {
+        for (char c : row) System.out.print(c);
+        System.out.println();
+    }
+
     public static void resetNineBoard() {
         nineBoxes = new char[][]{{' ', '|', ' ', '|', ' '},
                 {'-', '+', '-', '+', '-'},
@@ -54,10 +59,5 @@ public class NineBoxBoard {
                 break;
 
         }
-    }
-
-    private static void accept(char[] row) {
-        for (char c : row) System.out.print(c);
-        System.out.println();
     }
 }
