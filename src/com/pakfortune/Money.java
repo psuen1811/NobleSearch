@@ -19,11 +19,11 @@ public enum Money {
         this.moneyResult = moneyResult;
     }
 
-    public String getMoneyResult() {
+    private String getMoneyResult() {
         return this.moneyResult;
     }
 
-    protected static String calculate(String input) {
+    public static String calculate(String input) {
         // 取天干
         String s;
         for (Stem stem : Stem.values())
