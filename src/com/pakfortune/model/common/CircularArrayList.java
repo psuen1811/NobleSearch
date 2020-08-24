@@ -1,4 +1,4 @@
-package com.pakfortune;
+package com.pakfortune.model.common;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.pakfortune;
+package com.pakfortune.model.exception;
 
 public class InputStemBranchException extends Exception {
     public InputStemBranchException() {

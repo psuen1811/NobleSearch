@@ -1,4 +1,4 @@
-package com.pakfortune;
+package com.pakfortune.model.elements;
 
 import com.google.common.collect.ImmutableList;
 

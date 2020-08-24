@@ -1,4 +1,4 @@
-package com.pakfortune;
+package com.pakfortune.model.elements;
 
 @SuppressWarnings("NonAsciiCharacters")
 public enum Branch {
