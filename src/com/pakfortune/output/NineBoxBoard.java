@@ -1,4 +1,4 @@
-package com.pakfortune;
+package com.pakfortune.output;
 
 public class NineBoxBoard {
     private static char[][] nineBoxes = {{' ', '|', ' ', '|', ' '},
