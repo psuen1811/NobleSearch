@@ -1,7 +1,7 @@
 package com.pakfortune;
 
 import com.google.common.collect.Lists;
-import com.pakfortune.model.elements.SixtyJiaziTable;
+import com.pakfortune.model.element.SixtyJiaziTable;
 
 import java.util.*;
 

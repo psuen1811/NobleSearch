@@ -1,9 +1,9 @@
-package com.pakfortune.model.stars;
+package com.pakfortune.model.star;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableList;
-import com.pakfortune.model.elements.Stem;
+import com.pakfortune.model.element.Stem;
 
 import java.util.List;
 

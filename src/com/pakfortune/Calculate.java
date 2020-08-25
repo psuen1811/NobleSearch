@@ -4,11 +4,11 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.pakfortune.common.CircularArrayList;
 import com.pakfortune.exception.InputStemBranchException;
-import com.pakfortune.model.elements.Direction;
-import com.pakfortune.model.elements.SixtyJiaziTable;
-import com.pakfortune.model.stars.Horse;
-import com.pakfortune.model.stars.Money;
-import com.pakfortune.model.stars.Richman;
+import com.pakfortune.model.element.Direction;
+import com.pakfortune.model.element.SixtyJiaziTable;
+import com.pakfortune.model.star.Horse;
+import com.pakfortune.model.star.Money;
+import com.pakfortune.model.star.Richman;
 import com.pakfortune.output.NineBoxBoard;
 
 import java.util.ArrayList;

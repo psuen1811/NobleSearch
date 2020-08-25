@@ -1,8 +1,8 @@
-package com.pakfortune.model.stars;
+package com.pakfortune.model.star;
 
 import com.google.common.base.Preconditions;
-import com.pakfortune.model.elements.SixtyJiaziTable;
-import com.pakfortune.model.elements.Branch;
+import com.pakfortune.model.element.SixtyJiaziTable;
+import com.pakfortune.model.element.Branch;
 
 @SuppressWarnings("NonAsciiCharacters")
 public enum Horse {

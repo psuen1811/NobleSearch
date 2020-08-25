@@ -1,4 +1,4 @@
-package com.pakfortune.model.elements;
+package com.pakfortune.model.element;
 
 @SuppressWarnings("NonAsciiCharacters")
 public enum Stem {

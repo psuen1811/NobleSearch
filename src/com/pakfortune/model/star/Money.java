@@ -1,6 +1,6 @@
-package com.pakfortune.model.stars;
+package com.pakfortune.model.star;
 
-import com.pakfortune.model.elements.Stem;
+import com.pakfortune.model.element.Stem;
 
 @SuppressWarnings({"NonAsciiCharacters", "unused"})
 public enum Money {
