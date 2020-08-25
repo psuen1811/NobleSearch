@@ -139,7 +139,7 @@ public class Calculate {
     }
 
     private void printOutputGraph(int index) {
-        NineBoxBoard.setSixBoard(index, "X");
+        NineBoxBoard.setSixBoard(index, 'X');
         System.out.println();
         NineBoxBoard.printBoard();
         System.out.println();

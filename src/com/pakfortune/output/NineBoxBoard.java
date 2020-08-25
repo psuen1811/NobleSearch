@@ -22,8 +22,7 @@ public class NineBoxBoard {
                 {' ', '|', ' ', '|', ' '}};
     }
 
-    public static void setSixBoard(int pos, String type) {
-        char c = type.charAt(0);
+    public static void setSixBoard(int pos, char c) {
         switch (pos) {
             case 0: // 中
                 nineBoxes[2][2] = c;
