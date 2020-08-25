@@ -82,8 +82,10 @@ public enum Horse {
         // 取地支
         String s = null;
         for (Branch branch : Branch.values())
-            if (input.contains(branch.name()))
+            if (input.contains(branch.name())) {
                 s = branch.name();
+                break;
+            }
         for (Horse key : Horse.values())
             if (key.name().contains(Preconditions.checkNotNull(s))) return key.checkStemBranch(input).toString();
         return null;

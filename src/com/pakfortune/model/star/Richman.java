@@ -1,6 +1,5 @@
 package com.pakfortune.model.star;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableList;
 import com.pakfortune.model.element.Stem;
@@ -38,12 +37,12 @@ public enum Richman {
 
     public static List<String> calculate(String input) {
         // 取天干
-        String s = null;
+        String s;
         for( Stem stem : Stem.values() )
-            if( input.contains(stem.name()) )
+            if( input.contains(stem.name()) ) {
                 s = stem.name();
-        for (String stem : list.keySet())
-            if (stem.equals(Preconditions.checkNotNull(s))) return ImmutableList.copyOf(list.get(s));
+                return ImmutableList.copyOf(list.get(s));
+            }
         return null;
     }
 }
