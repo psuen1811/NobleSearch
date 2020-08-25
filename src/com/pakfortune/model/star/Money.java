@@ -26,14 +26,9 @@ public enum Money {
     }
 
     public static String calculate(String input) {
-        // 取天干
-        String s;
-        for (Stem stem : Stem.values())
-            if (input.contains(stem.name())) {
-                s = stem.name();
-                Money key = Money.valueOf(s);
-                return key.getMoneyResult();
-            }
+        for (Money money : values())
+            if (input.contains(money.name()))
+                return Money.valueOf(money.name()).getMoneyResult();
         return null;
     }
 }

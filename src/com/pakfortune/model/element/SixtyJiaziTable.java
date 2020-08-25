@@ -1,5 +1,6 @@
 package com.pakfortune.model.element;
 
+import com.google.common.base.Enums;
 import com.google.common.collect.ImmutableList;
 
 import java.util.*;
