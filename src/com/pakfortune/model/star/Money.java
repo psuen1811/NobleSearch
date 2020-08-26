@@ -24,7 +24,7 @@ public enum Money {
     }
 
     public static String calculate(String input) {
-        String [] arr = input.split("(?!^)");
+        String[] arr = input.split("(?!^)");
         return Money.valueOf(arr[0]).getInformation();
     }
 }

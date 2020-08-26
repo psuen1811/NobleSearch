@@ -60,7 +60,6 @@ public class Calculate {
                     for (String s : Preconditions.checkNotNull(richManLocations)) {
                         richManResult.add(searchAllAndPrint(s, "真貴人：\t"));
                     }
-
                     // 真文昌
                     studyLocation = Study.calculate(input);
                     studyResult = searchAllAndPrint(studyLocation, "真文昌: \t");
@@ -80,7 +79,6 @@ public class Calculate {
                     map = Disaster.getLookup();
                     String disasterLocation = ThreeKillers.calculate(input, map);
                     searchAllAndPrint(disasterLocation, "真災煞: \t");
-
                 }
             } catch (InputStemBranchException e) {
                 System.err.println(e.getMessage());

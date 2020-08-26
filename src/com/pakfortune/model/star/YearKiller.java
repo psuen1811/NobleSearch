@@ -9,26 +9,36 @@ import java.util.Map;
  歲煞的歌诀为
  申子辰煞在未, 巳酉丑煞在辰, 寅午戌煞在丑, 亥卯未煞在未
  */
+@SuppressWarnings("NonAsciiCharacters")
 public enum YearKiller {
-    ;
-    private static final Map<String, String> lookup = Maps.newHashMap();
+    申 ("未"),
+    子 ("未"),
+    辰 ("未"),
+    巳 ("辰"),
+    酉 ("辰"),
+    丑 ("辰"),
+    寅 ("丑"),
+    午 ("丑"),
+    戌 ("丑"),
+    亥 ("戌"),
+    卯 ("戌"),
+    未 ("戌");
+
+    private final String information;
+
+    YearKiller(String information) {
+        this.information = information;
+    }
+
+    private static final Map<String, String> lookup = Maps.newHashMapWithExpectedSize(YearKiller.values().length);
 
     static {
-        lookup.put("申", "未");
-        lookup.put("子", "未");
-        lookup.put("辰", "未");
-        lookup.put("巳", "辰");
-        lookup.put("酉", "辰");
-        lookup.put("丑", "辰");
-        lookup.put("寅", "丑");
-        lookup.put("午", "丑");
-        lookup.put("戌", "丑");
-        lookup.put("亥", "戌");
-        lookup.put("卯", "戌");
-        lookup.put("未", "戌");
+        for(YearKiller yearKiller : values())
+            lookup.put(yearKiller.name(), yearKiller.information);
     }
 
     public static Map<String, String> getLookup() {
         return ImmutableMap.copyOf(lookup);
     }
+
 }

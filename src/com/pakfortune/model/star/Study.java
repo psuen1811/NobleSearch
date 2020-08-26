@@ -1,5 +1,7 @@
 package com.pakfortune.model.star;
 
+import com.google.common.base.Enums;
+
 @SuppressWarnings({"unused", "NonAsciiCharacters"})
 public enum Study {
     甲("己巳"),
@@ -25,6 +27,10 @@ public enum Study {
 
     public static String calculate(String input) {
         String[] arr = input.split("(?!^)");
-        return Study.valueOf(arr[0]).getInformation();
+        return getIfPresent(arr[0]).getInformation();
+    }
+
+    public static Study getIfPresent(String name) {
+        return Enums.getIfPresent(Study.class, name).orNull();
     }
 }

@@ -9,23 +9,31 @@ import java.util.Map;
  劫煞的歌诀为：
  申子辰见巳，亥卯未见申，寅午戌见亥，巳酉丑见寅
  */
+@SuppressWarnings("NonAsciiCharacters")
 public enum RobKiller {
-    ;
-    private static final Map<String, String> lookup = Maps.newHashMap();
+    申("巳"),
+    子("巳"),
+    辰("巳"),
+    亥("申"),
+    卯("申"),
+    未("申"),
+    寅("亥"),
+    午("亥"),
+    戌("亥"),
+    巳("寅"),
+    酉("寅"),
+    丑("寅");
+
+    private final String information;
+    private static final Map<String, String> lookup = Maps.newHashMapWithExpectedSize(RobKiller.values().length);
+
+    RobKiller(String information) {
+        this.information = information;
+    }
 
     static {
-        lookup.put("申", "巳");
-        lookup.put("子", "巳");
-        lookup.put("辰", "巳");
-        lookup.put("亥", "申");
-        lookup.put("卯", "申");
-        lookup.put("未", "申");
-        lookup.put("寅", "亥");
-        lookup.put("午", "亥");
-        lookup.put("戌", "亥");
-        lookup.put("巳", "寅");
-        lookup.put("酉", "寅");
-        lookup.put("丑", "寅");
+        for (RobKiller robKiller : values())
+            lookup.put(robKiller.name(), robKiller.information);
     }
 
     public static Map<String, String> getLookup() {

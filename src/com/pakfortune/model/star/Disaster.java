@@ -9,23 +9,31 @@ import java.util.Map;
  灾煞的歌诀为
  申子辰见午, 亥卯未见酉, 寅午戌见子, 巳酉丑见卯
 */
+@SuppressWarnings("NonAsciiCharacters")
 public enum Disaster {
-    ;
-    private static final Map<String, String> lookup = Maps.newHashMap();
+    申("午"),
+    子("午"),
+    辰("午"),
+    亥("酉"),
+    卯("酉"),
+    未("酉"),
+    寅("子"),
+    午("子"),
+    戌("子"),
+    巳("卯"),
+    酉("卯"),
+    丑("卯");
+
+    private final String information;
+    private static final Map<String, String> lookup = Maps.newHashMapWithExpectedSize(Disaster.values().length);
+
+    Disaster(String information) {
+        this.information = information;
+    }
 
     static {
-        lookup.put("申", "午");
-        lookup.put("子", "午");
-        lookup.put("辰", "午");
-        lookup.put("亥", "酉");
-        lookup.put("卯", "酉");
-        lookup.put("未", "酉");
-        lookup.put("寅", "子");
-        lookup.put("午", "子");
-        lookup.put("戌", "子");
-        lookup.put("巳", "卯");
-        lookup.put("酉", "卯");
-        lookup.put("丑", "卯");
+        for (Disaster disaster : values())
+            lookup.put(disaster.name(), disaster.information);
     }
 
     public static Map<String, String> getLookup() {

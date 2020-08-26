@@ -79,7 +79,7 @@ public enum Horse {
 
     public static String calculate(String input) {
         // 取地支
-        String [] arr = input.split("(?!^)");
+        String[] arr = input.split("(?!^)");
         String tempBranch = Branch.valueOf(arr[1]).name();
 
         for (Horse key : Horse.values())
