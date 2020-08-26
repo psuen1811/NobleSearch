@@ -23,6 +23,8 @@ public class Calculate {
     private int horseResult;
     private List<String> richManLocations;
     private final List<Integer> richManResult = Lists.newArrayList();
+    private String studyLocation;
+    private int studyResult;
 
     @SuppressWarnings("rawtypes")
     private static CircularArrayList circularArrayList;
@@ -60,8 +62,8 @@ public class Calculate {
                     }
 
                     // 真文昌
-                    String studyLocation = Study.calculate(input);
-                    searchAllAndPrint(studyLocation, "真文昌: \t");
+                    studyLocation = Study.calculate(input);
+                    studyResult = searchAllAndPrint(studyLocation, "真文昌: \t");
 
                     // No need global variables here since this is used for "Year" /////////
                     // 歲煞
@@ -115,6 +117,9 @@ public class Calculate {
                         calculatePrintMonth(inputMonth, richManLocations.get(i), arrayList, circularArrayList,
                             richManResult.get(i),"真流月貴人");
                     }
+
+                    calculatePrintMonth(inputMonth, studyLocation, arrayList, circularArrayList, studyResult,
+                            "真流月文昌");
 
                 }
             } catch (InputStemBranchException e) {
