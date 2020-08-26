@@ -6,10 +6,7 @@ import com.pakfortune.common.CircularArrayList;
 import com.pakfortune.exception.InputStemBranchException;
 import com.pakfortune.model.element.Direction;
 import com.pakfortune.model.element.SixtyJiaziTable;
-import com.pakfortune.model.star.Horse;
-import com.pakfortune.model.star.Money;
-import com.pakfortune.model.star.Richman;
-import com.pakfortune.model.star.YearKiller;
+import com.pakfortune.model.star.*;
 import com.pakfortune.output.NineBoxBoard;
 
 import java.util.ArrayList;
@@ -59,9 +56,16 @@ public class Calculate {
                     for (String s : Preconditions.checkNotNull(richManLocations)) {
                         richManResult.add(searchAllAndPrint(s, "真貴人：\t"));
                     }
-                    // No need global variables here since this is used for "Year"
+
+                    // No need global variables here since this is used for "Year" /////////
+                    // 歲煞
                     String yearKillerLocation = YearKiller.calculate(input);
                     searchAllAndPrint(yearKillerLocation, "真歲煞: \t");
+
+                    // 劫煞
+                    String robKillerLocation = RobKiller.calculate(input);
+                    searchAllAndPrint(robKillerLocation, "真劫煞: \t");
+
                 }
             } catch (InputStemBranchException e) {
                 System.err.println(e.getMessage());
