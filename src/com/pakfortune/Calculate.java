@@ -66,6 +66,10 @@ public class Calculate {
                     String robKillerLocation = RobKiller.calculate(input);
                     searchAllAndPrint(robKillerLocation, "真劫煞: \t");
 
+                    // 災煞
+                    String disasterLocation = Disaster.calculate(input);
+                    searchAllAndPrint(disasterLocation, "真災煞: \t");
+
                 }
             } catch (InputStemBranchException e) {
                 System.err.println(e.getMessage());
