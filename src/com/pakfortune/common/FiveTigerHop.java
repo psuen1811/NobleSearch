@@ -17,6 +17,6 @@ public class FiveTigerHop {
             s = "壬";
         if (input.equals("戊") || input.equals("癸"))
             s = "甲";
-        return Stem.valueOf(s);
+        return Stem.getIfPresent(s);
     }
 }
