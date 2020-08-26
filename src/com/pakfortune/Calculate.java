@@ -9,6 +9,7 @@ import com.pakfortune.model.element.SixtyJiaziTable;
 import com.pakfortune.model.star.Horse;
 import com.pakfortune.model.star.Money;
 import com.pakfortune.model.star.Richman;
+import com.pakfortune.model.star.YearKiller;
 import com.pakfortune.output.NineBoxBoard;
 
 import java.util.ArrayList;
@@ -23,7 +24,6 @@ public class Calculate {
     private int horseResult;
     private List<String> richManLocations;
     private final List<Integer> richManResult = Lists.newArrayList();
-
 
     @SuppressWarnings("rawtypes")
     private static CircularArrayList circularArrayList;
@@ -59,6 +59,9 @@ public class Calculate {
                     for (String s : Preconditions.checkNotNull(richManLocations)) {
                         richManResult.add(searchAllAndPrint(s, "真貴人：\t"));
                     }
+                    // No need global variables here since this is used for "Year"
+                    String yearKillerLocation = YearKiller.calculate(input);
+                    searchAllAndPrint(yearKillerLocation, "真歲煞: \t");
                 }
             } catch (InputStemBranchException e) {
                 System.err.println(e.getMessage());
@@ -95,6 +98,7 @@ public class Calculate {
                         calculatePrintMonth(inputMonth, richManLocations.get(i), arrayList, circularArrayList,
                             richManResult.get(i),"真流月貴人");
                     }
+
                 }
             } catch (InputStemBranchException e) {
                 System.err.println(e.getMessage());
