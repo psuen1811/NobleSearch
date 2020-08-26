@@ -59,6 +59,10 @@ public class Calculate {
                         richManResult.add(searchAllAndPrint(s, "真貴人：\t"));
                     }
 
+                    // 真文昌
+                    String studyLocation = Study.calculate(input);
+                    searchAllAndPrint(studyLocation, "真文昌: \t");
+
                     // No need global variables here since this is used for "Year" /////////
                     // 歲煞
                     Map<String, String> map = YearKiller.getLookup();
