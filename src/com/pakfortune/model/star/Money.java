@@ -1,5 +1,8 @@
 package com.pakfortune.model.star;
 
+import com.google.common.base.Enums;
+import com.pakfortune.model.element.Branch;
+
 @SuppressWarnings({"NonAsciiCharacters", "unused"})
 public enum Money {
     甲("丙寅"),
@@ -25,6 +28,10 @@ public enum Money {
 
     public static String calculate(String input) {
         String[] arr = input.split("(?!^)");
-        return Money.valueOf(arr[0]).getInformation();
+        return getIfPresent(arr[0]).getInformation();
+    }
+
+    public static Money getIfPresent(String name) {
+        return Enums.getIfPresent(Money.class, name).orNull();
     }
 }
