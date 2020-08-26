@@ -13,7 +13,7 @@ public class FiveTigerHop {
             s = "戊";
         if(input.equals("丙") || input.equals("辛"))
             s = "庚";
-        if(input.equals("") || input.equals("壬"))
+        if(input.equals("丁") || input.equals("壬"))
             s = "壬";
         if(input.equals("戊") || input.equals("癸"))
             s = "甲";
