@@ -1,7 +1,5 @@
 package com.pakfortune.model.star;
 
-import com.pakfortune.model.element.Stem;
-
 @SuppressWarnings({"NonAsciiCharacters", "unused"})
 public enum Money {
     甲("丙寅"),
@@ -26,9 +24,8 @@ public enum Money {
     }
 
     public static String calculate(String input) {
-        for (Money money : values())
-            if (input.contains(money.name()))
-                return Money.valueOf(money.name()).getMoneyResult();
-        return null;
+        String [] arr = input.split("(?!^)");
+        String tempStem = Money.valueOf(arr[0]).name();
+        return Money.valueOf(tempStem).getMoneyResult();
     }
 }

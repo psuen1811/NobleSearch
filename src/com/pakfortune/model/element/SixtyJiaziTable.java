@@ -1,6 +1,5 @@
 package com.pakfortune.model.element;
 
-import com.google.common.base.Enums;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
@@ -17,7 +16,6 @@ public enum SixtyJiaziTable {
 
     private static final List<Integer> values = Lists.newArrayList();
 
-
     static {
         Arrays.stream(SixtyJiaziTable.values())
                 .map(Enum::ordinal)
@@ -29,12 +27,7 @@ public enum SixtyJiaziTable {
     }
 
     public static SixtyJiaziTable findByValue(int value) {
-        for (SixtyJiaziTable v : values()) {
-            if (v.ordinal() == value) {
-                return v;
-            }
-        }
-        return null;
+        return SixtyJiaziTable.values()[value];
     }
 
     public static <E extends Enum<E>> boolean ifStemBranchInputExists(Class<E> _enumClass, String value) {

@@ -1,11 +1,7 @@
 package com.pakfortune.model.star;
 
-import com.google.common.base.Enums;
-import com.google.common.base.Preconditions;
 import com.pakfortune.model.element.SixtyJiaziTable;
 import com.pakfortune.model.element.Branch;
-
-import java.util.EnumSet;
 
 @SuppressWarnings("NonAsciiCharacters")
 public enum Horse {
@@ -83,15 +79,11 @@ public enum Horse {
 
     public static String calculate(String input) {
         // 取地支
-        String s = null;
-        for (Branch branch : Branch.values())
-            if (input.contains(branch.name())) {
-                s = branch.name();
-                break;
-            }
+        String [] arr = input.split("(?!^)");
+        String tempBranch = Branch.valueOf(arr[1]).name();
 
         for (Horse key : Horse.values())
-            if (key.name().contains(Preconditions.checkNotNull(s))) return key.checkStemBranch(input).toString();
+            if (key.name().contains(tempBranch)) return key.checkStemBranch(input).toString();
         return null;
 
     }

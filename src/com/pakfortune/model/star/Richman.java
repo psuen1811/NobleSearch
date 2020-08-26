@@ -37,9 +37,8 @@ public enum Richman {
 
     public static List<String> calculate(String input) {
         // 取天干
-        for( Stem stem : Stem.values() )
-            if( input.contains(stem.name()) )
-                return ImmutableList.copyOf(list.get(stem.name()));
-        return null;
+        String [] arr = input.split("(?!^)");
+        String tempStem = Stem.valueOf(arr[0]).name();
+        return ImmutableList.copyOf(list.get(tempStem));
     }
 }
