@@ -2,6 +2,7 @@ package com.pakfortune.common;
 
 import com.pakfortune.model.element.Stem;
 
+// 五虎遁
 public class FiveTigerHop {
 
     public static Stem hop(String input) {
