@@ -3,6 +3,7 @@ package com.pakfortune;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.pakfortune.common.CircularArrayList;
+import com.pakfortune.common.ThreeKillers;
 import com.pakfortune.exception.InputStemBranchException;
 import com.pakfortune.model.element.Direction;
 import com.pakfortune.model.element.SixtyJiaziTable;
@@ -11,6 +12,7 @@ import com.pakfortune.output.NineBoxBoard;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Calculate {
@@ -59,15 +61,18 @@ public class Calculate {
 
                     // No need global variables here since this is used for "Year" /////////
                     // 歲煞
-                    String yearKillerLocation = YearKiller.calculate(input);
+                    Map<String, String> map = YearKiller.getLookup();
+                    String yearKillerLocation = ThreeKillers.calculate(input, map);
                     searchAllAndPrint(yearKillerLocation, "真歲煞: \t");
 
                     // 劫煞
-                    String robKillerLocation = RobKiller.calculate(input);
+                    map = RobKiller.getLookup();
+                    String robKillerLocation = ThreeKillers.calculate(input, map);
                     searchAllAndPrint(robKillerLocation, "真劫煞: \t");
 
                     // 災煞
-                    String disasterLocation = Disaster.calculate(input);
+                    map = Disaster.getLookup();
+                    String disasterLocation = ThreeKillers.calculate(input, map);
                     searchAllAndPrint(disasterLocation, "真災煞: \t");
 
                 }
