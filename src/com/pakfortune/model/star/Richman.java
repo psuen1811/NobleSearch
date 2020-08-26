@@ -38,6 +38,6 @@ public enum Richman {
     public static List<String> calculate(String input) {
         // 取天干
         String[] arr = input.split("(?!^)");
-        return ImmutableList.copyOf(list.get(Stem.valueOf(arr[0]).name()));
+        return ImmutableList.copyOf(list.get(Stem.getIfPresent(arr[0]).name()));
     }
 }
