@@ -8,8 +8,8 @@ import com.pakfortune.model.element.Stem;
 import java.util.Map;
 
 /*
-劫煞的歌诀为：
-申子辰见巳，亥卯未见申，寅午戌见亥，巳酉丑见寅
+ 劫煞的歌诀为：
+ 申子辰见巳，亥卯未见申，寅午戌见亥，巳酉丑见寅
  */
 public enum RobKiller {
     ;
@@ -31,7 +31,7 @@ public enum RobKiller {
     }
 
     public static String calculate(String input) {
-        String [] arr = input.split("(?!^)");
+        String[] arr = input.split("(?!^)");
         String tempStem = Stem.valueOf(arr[0]).name();
         String tempBranch = Branch.valueOf(arr[1]).name();
         String location = lookup.get(tempBranch);
