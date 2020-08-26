@@ -13,18 +13,18 @@ public enum Money {
     壬("辛亥"),
     癸("甲子");
 
-    private final String moneyResult;
+    private final String information;
 
-    Money(String moneyResult) {
-        this.moneyResult = moneyResult;
+    Money(String information) {
+        this.information = information;
     }
 
-    private String getMoneyResult() {
-        return this.moneyResult;
+    private String getInformation() {
+        return this.information;
     }
 
     public static String calculate(String input) {
         String [] arr = input.split("(?!^)");
-        return Money.valueOf(arr[0]).getMoneyResult();
+        return Money.valueOf(arr[0]).getInformation();
     }
 }

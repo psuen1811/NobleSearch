@@ -11,7 +11,7 @@ import java.util.Map;
 public class ThreeKillers {
 
     public static String calculate(String input, Map<String, String> lookup) {
-        String [] arr = input.split("(?!^)");
+        String[] arr = input.split("(?!^)");
         String tempStem = Stem.valueOf(arr[0]).name();
         String tempBranch = Branch.valueOf(arr[1]).name();
         String location = lookup.get(tempBranch);
