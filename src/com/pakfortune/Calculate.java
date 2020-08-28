@@ -68,7 +68,6 @@ public class Calculate {
 
                     // No need global variables here since this is used for "Year" /////////
                     // 歲煞
-
                     String location = YearKiller.calculate(tempBranch);
                     String yearKillerLocation = ThreeKillers.calculate(tempStem, location);
                     searchAllAndPrint(yearKillerLocation, "真歲煞: \t");
@@ -116,7 +115,7 @@ public class Calculate {
                     // 流月二貴人
                     for (int i = 0; i < 2; i++) {
                         calculatePrintMonth(inputMonth, richManLocations.get(i), arrayList, circularArrayList,
-                            richManResult.get(i),"真流月貴人");
+                                richManResult.get(i), "真流月貴人");
                     }
 
                     calculatePrintMonth(inputMonth, studyLocation, arrayList, circularArrayList, studyResult,
@@ -145,7 +144,7 @@ public class Calculate {
 
     @SuppressWarnings("rawtypes")
     private void calculatePrintMonth(String inputMonth, String location, ArrayList<Integer> arrayList,
-                                            CircularArrayList circularArrayList, int result, String type) {
+                                     CircularArrayList circularArrayList, int result, String type) {
         int index;
         // Calculate the # of jumps within Direction
         int resultMonth = SixtyJiaziTable.valueOf(location).ordinal() - SixtyJiaziTable.valueOf(inputMonth).ordinal();
