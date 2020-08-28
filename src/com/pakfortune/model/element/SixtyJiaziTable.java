@@ -1,9 +1,9 @@
 package com.pakfortune.model.element;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @SuppressWarnings({"unused", "NonAsciiCharacters"})
 public enum SixtyJiaziTable {
@@ -14,13 +14,9 @@ public enum SixtyJiaziTable {
     甲辰, 乙巳, 丙午, 丁未, 戊申, 己酉, 庚戌, 辛亥, 壬子, 癸丑,
     甲寅, 乙卯, 丙辰, 丁巳, 戊午, 己未, 庚申, 辛酉, 壬戌, 癸亥;
 
-    private static final List<Integer> values = Lists.newArrayList();
-
-    static {
-        Arrays.stream(SixtyJiaziTable.values())
-                .map(Enum::ordinal)
-                .forEach(values::add);
-    }
+    private static final List<Integer> values = Arrays.stream(SixtyJiaziTable.values())
+            .map(Enum::ordinal)
+            .collect(Collectors.toList());
 
     public static List<Integer> getSixJiaziList() {
         return ImmutableList.copyOf(values);

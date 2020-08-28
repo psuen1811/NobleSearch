@@ -1,9 +1,6 @@
 package com.pakfortune.model.star;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-
-import java.util.Map;
+import com.google.common.base.Enums;
 
 /*
  灾煞的歌诀为
@@ -25,18 +22,20 @@ public enum Disaster {
     丑("卯");
 
     private final String information;
-    private static final Map<String, String> lookup = Maps.newHashMapWithExpectedSize(Disaster.values().length);
 
-    Disaster(String information) {
+    Disaster(final String information) {
         this.information = information;
     }
 
-    static {
-        for (Disaster disaster : values())
-            lookup.put(disaster.name(), disaster.information);
+    public String getInformation() {
+        return information;
     }
 
-    public static Map<String, String> getLookup() {
-        return ImmutableMap.copyOf(lookup);
+    public static String calculate(String branch) {
+        return getIfPresent(branch).getInformation();
+    }
+
+    public static Disaster getIfPresent(String name) {
+        return Enums.getIfPresent(Disaster.class, name).orNull();
     }
 }

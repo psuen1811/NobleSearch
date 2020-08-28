@@ -35,9 +35,7 @@ public enum Richman {
         list.put("癸", "丁巳");
     }
 
-    public static List<String> calculate(String input) {
-        // 取天干
-        String[] arr = input.split("(?!^)");
-        return ImmutableList.copyOf(list.get(Stem.getIfPresent(arr[0]).name()));
+    public static List<String> calculate(String stem) {
+        return ImmutableList.copyOf(list.get(Stem.getIfPresent(stem).name()));
     }
 }

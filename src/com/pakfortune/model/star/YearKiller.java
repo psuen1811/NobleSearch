@@ -1,9 +1,6 @@
 package com.pakfortune.model.star;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-
-import java.util.Map;
+import com.google.common.base.Enums;
 
 /*
  歲煞的歌诀为
@@ -26,19 +23,20 @@ public enum YearKiller {
 
     private final String information;
 
-    YearKiller(String information) {
+    YearKiller(final String information) {
         this.information = information;
     }
 
-    private static final Map<String, String> lookup = Maps.newHashMapWithExpectedSize(YearKiller.values().length);
-
-    static {
-        for(YearKiller yearKiller : values())
-            lookup.put(yearKiller.name(), yearKiller.information);
+    public String getInformation() {
+        return information;
     }
 
-    public static Map<String, String> getLookup() {
-        return ImmutableMap.copyOf(lookup);
+    public static String calculate(String branch) {
+        return getIfPresent(branch).getInformation();
+    }
+
+    public static YearKiller getIfPresent(String name) {
+        return Enums.getIfPresent(YearKiller.class, name).orNull();
     }
 
 }

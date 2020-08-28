@@ -12,7 +12,6 @@ import com.pakfortune.output.NineBoxBoard;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Calculate {
@@ -42,6 +41,9 @@ public class Calculate {
                 scanner = new Scanner(System.in);
                 String input = scanner.nextLine();
                 stemBranchExists = SixtyJiaziTable.ifStemBranchInputExists(SixtyJiaziTable.class, input);
+                String[] arr = input.split("(?!^)");
+                String tempStem = arr[0];
+                String tempBranch = arr[1];
 
                 if (!stemBranchExists) {
                     throw new InputStemBranchException();
@@ -50,34 +52,35 @@ public class Calculate {
                     // 根據輸入干支飛遁六十甲子
                     circularArrayList.shiftRight(SixtyJiaziTable.valueOf(input).ordinal());
                     // 找真祿干支
-                    moneyLocation = Money.calculate(input);
+                    moneyLocation = Money.calculate(tempStem);
                     moneyResult = searchAllAndPrint(moneyLocation, "真祿: \t");
                     // 找真馬干支
-                    horseLocation = Horse.calculate(input);
+                    horseLocation = Horse.calculate(tempStem, tempBranch);
                     horseResult = searchAllAndPrint(horseLocation, "真馬: \t");
                     // 找貴人干支
-                    richManLocations = Richman.calculate(input);
+                    richManLocations = Richman.calculate(tempStem);
                     for (String s : Preconditions.checkNotNull(richManLocations)) {
                         richManResult.add(searchAllAndPrint(s, "真貴人：\t"));
                     }
                     // 真文昌
-                    studyLocation = Study.calculate(input);
+                    studyLocation = Study.calculate(tempStem);
                     studyResult = searchAllAndPrint(studyLocation, "真文昌: \t");
 
                     // No need global variables here since this is used for "Year" /////////
                     // 歲煞
-                    Map<String, String> map = YearKiller.getLookup();
-                    String yearKillerLocation = ThreeKillers.calculate(input, map);
+
+                    String location = YearKiller.calculate(tempBranch);
+                    String yearKillerLocation = ThreeKillers.calculate(tempStem, location);
                     searchAllAndPrint(yearKillerLocation, "真歲煞: \t");
 
                     // 劫煞
-                    map = RobKiller.getLookup();
-                    String robKillerLocation = ThreeKillers.calculate(input, map);
+                    location = RobKiller.calculate(tempBranch);
+                    String robKillerLocation = ThreeKillers.calculate(tempStem, location);
                     searchAllAndPrint(robKillerLocation, "真劫煞: \t");
 
                     // 災煞
-                    map = Disaster.getLookup();
-                    String disasterLocation = ThreeKillers.calculate(input, map);
+                    location = Disaster.calculate(tempBranch);
+                    String disasterLocation = ThreeKillers.calculate(tempStem, location);
                     searchAllAndPrint(disasterLocation, "真災煞: \t");
                 }
             } catch (InputStemBranchException e) {

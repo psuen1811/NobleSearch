@@ -9,15 +9,15 @@ public enum Horse {
         @Override
         SixtyJiaziTable checkStemBranch(String input) {
             SixtyJiaziTable result = null;
-            if (input.contains("甲"))
+            if (input.equals("甲"))
                 result = SixtyJiaziTable.壬申;
-            if (input.contains("丙"))
+            if (input.equals("丙"))
                 result = SixtyJiaziTable.丙申;
-            if (input.contains("戊"))
+            if (input.equals("戊"))
                 result = SixtyJiaziTable.庚申;
-            if (input.contains("庚"))
+            if (input.equals("庚"))
                 result = SixtyJiaziTable.甲申;
-            if (input.contains("壬"))
+            if (input.equals("壬"))
                 result = SixtyJiaziTable.戊申;
             return result;
         }
@@ -26,15 +26,15 @@ public enum Horse {
         @Override
         SixtyJiaziTable checkStemBranch(String input) {
             SixtyJiaziTable result = null;
-            if (input.contains("甲"))
+            if (input.equals("甲"))
                 result = SixtyJiaziTable.丙寅;
-            if (input.contains("丙"))
+            if (input.equals("丙"))
                 result = SixtyJiaziTable.庚寅;
-            if (input.contains("戊"))
+            if (input.equals("戊"))
                 result = SixtyJiaziTable.甲寅;
-            if (input.contains("庚"))
+            if (input.equals("庚"))
                 result = SixtyJiaziTable.戊寅;
-            if (input.contains("壬"))
+            if (input.equals("壬"))
                 result = SixtyJiaziTable.壬寅;
             return result;
         }
@@ -43,15 +43,15 @@ public enum Horse {
         @Override
         SixtyJiaziTable checkStemBranch(String input) {
             SixtyJiaziTable result = null;
-            if (input.contains("乙"))
+            if (input.equals("乙"))
                 result = SixtyJiaziTable.辛巳;
-            if (input.contains("丁"))
+            if (input.equals("丁"))
                 result = SixtyJiaziTable.乙巳;
-            if (input.contains("己"))
+            if (input.equals("己"))
                 result = SixtyJiaziTable.己巳;
-            if (input.contains("辛"))
+            if (input.equals("辛"))
                 result = SixtyJiaziTable.癸巳;
-            if (input.contains("癸"))
+            if (input.equals("癸"))
                 result = SixtyJiaziTable.丁巳;
             return result;
         }
@@ -61,15 +61,15 @@ public enum Horse {
         @Override
         SixtyJiaziTable checkStemBranch(String input) {
             SixtyJiaziTable result = null;
-            if (input.contains("乙"))
+            if (input.equals("乙"))
                 result = SixtyJiaziTable.丁巳;
-            if (input.contains("丁"))
+            if (input.equals("丁"))
                 result = SixtyJiaziTable.辛巳;
-            if (input.contains("己"))
+            if (input.equals("己"))
                 result = SixtyJiaziTable.乙巳;
-            if (input.contains("辛"))
+            if (input.equals("辛"))
                 result = SixtyJiaziTable.己巳;
-            if (input.contains("癸"))
+            if (input.equals("癸"))
                 result = SixtyJiaziTable.癸巳;
             return result;
         }
@@ -77,15 +77,11 @@ public enum Horse {
 
     abstract SixtyJiaziTable checkStemBranch(String input);
 
-    public static String calculate(String input) {
-        // 取地支
-        String[] arr = input.split("(?!^)");
-        String tempBranch = Branch.getIfPresent(arr[1]).name();
+    public static String calculate(String stem, String branch) {
+        String tempBranch = Branch.getIfPresent(branch).name();
 
         for (Horse key : Horse.values())
-            if (key.name().contains(tempBranch)) return key.checkStemBranch(input).toString();
+            if (key.name().contains(tempBranch)) return key.checkStemBranch(stem).toString();
         return null;
-
     }
-
 }

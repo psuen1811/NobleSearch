@@ -1,7 +1,6 @@
 package com.pakfortune.model.star;
 
 import com.google.common.base.Enums;
-import com.pakfortune.model.element.Branch;
 
 @SuppressWarnings({"NonAsciiCharacters", "unused"})
 public enum Money {
@@ -26,9 +25,8 @@ public enum Money {
         return this.information;
     }
 
-    public static String calculate(String input) {
-        String[] arr = input.split("(?!^)");
-        return getIfPresent(arr[0]).getInformation();
+    public static String calculate(String stem) {
+        return getIfPresent(stem).getInformation();
     }
 
     public static Money getIfPresent(String name) {

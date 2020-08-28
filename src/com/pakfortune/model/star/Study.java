@@ -25,9 +25,8 @@ public enum Study {
         return information;
     }
 
-    public static String calculate(String input) {
-        String[] arr = input.split("(?!^)");
-        return getIfPresent(arr[0]).getInformation();
+    public static String calculate(String stem) {
+        return getIfPresent(stem).getInformation();
     }
 
     public static Study getIfPresent(String name) {

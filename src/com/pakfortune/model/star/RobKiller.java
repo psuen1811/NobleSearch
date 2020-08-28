@@ -1,9 +1,6 @@
 package com.pakfortune.model.star;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-
-import java.util.Map;
+import com.google.common.base.Enums;
 
 /*
  劫煞的歌诀为：
@@ -25,18 +22,20 @@ public enum RobKiller {
     丑("寅");
 
     private final String information;
-    private static final Map<String, String> lookup = Maps.newHashMapWithExpectedSize(RobKiller.values().length);
 
     RobKiller(String information) {
         this.information = information;
     }
 
-    static {
-        for (RobKiller robKiller : values())
-            lookup.put(robKiller.name(), robKiller.information);
+    public String getInformation() {
+        return information;
     }
 
-    public static Map<String, String> getLookup() {
-        return ImmutableMap.copyOf(lookup);
+    public static String calculate(String branch) {
+        return getIfPresent(branch).getInformation();
+    }
+
+    public static RobKiller getIfPresent(String name) {
+        return Enums.getIfPresent(RobKiller.class, name).orNull();
     }
 }
