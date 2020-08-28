@@ -50,7 +50,7 @@ public class Calculate {
                     // exit program here or throw some exception
                 } else {
                     // 根據輸入干支飛遁六十甲子
-                    circularArrayList.shiftRight(SixtyJiaziTable.valueOf(input).ordinal());
+                    circularArrayList.shiftRight(SixtyJiaziTable.getIfPresent(input).ordinal());
                     // 找真祿干支
                     moneyLocation = Money.calculate(tempStem);
                     moneyResult = searchAllAndPrint(moneyLocation, "真祿: \t");
