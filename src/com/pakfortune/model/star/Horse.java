@@ -78,10 +78,8 @@ public enum Horse {
     abstract SixtyJiaziTable checkStemBranch(String input);
 
     public static String calculate(String stem, String branch) {
-        String tempBranch = Branch.getIfPresent(branch).name();
-
         for (Horse key : Horse.values())
-            if (key.name().contains(tempBranch)) return key.checkStemBranch(stem).toString();
+            if (key.name().contains(branch)) return key.checkStemBranch(stem).toString();
         return null;
     }
 }
