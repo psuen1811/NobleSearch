@@ -109,7 +109,7 @@ public class Calculate {
                             "真流月祿");
 
                     // 流月馬
-                    calculatePrintMonth(inputMonth, SixtyJiaziTable.valueOf(horseLocation).name(), arrayList,
+                    calculatePrintMonth(inputMonth, SixtyJiaziTable.getIfPresent(horseLocation).name(), arrayList,
                             circularArrayList, horseResult, "真流月馬");
 
                     // 流月二貴人
@@ -132,7 +132,7 @@ public class Calculate {
         /*
           真祿馬干支 & 飛度序數
          */
-        int temp = SixtyJiaziTable.valueOf(location).ordinal();
+        int temp = SixtyJiaziTable.getIfPresent(location).ordinal();
         int index = (Integer) circularArrayList.get(temp) % MAGIC_NUMBER;
         // 真祿馬飛度方向
         System.out.println(type + location + "在" + Direction.findByValue(index));
@@ -147,7 +147,8 @@ public class Calculate {
                                      CircularArrayList circularArrayList, int result, String type) {
         int index;
         // Calculate the # of jumps within Direction
-        int resultMonth = SixtyJiaziTable.valueOf(location).ordinal() - SixtyJiaziTable.valueOf(inputMonth).ordinal();
+        int resultMonth = SixtyJiaziTable.getIfPresent(location).ordinal() - SixtyJiaziTable.getIfPresent(inputMonth)
+                .ordinal();
         // 負數即月份已過
         if (Integer.signum(resultMonth) < 0) System.out.println(type + "已過");
         else {
