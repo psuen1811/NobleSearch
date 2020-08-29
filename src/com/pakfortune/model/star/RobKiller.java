@@ -1,6 +1,7 @@
 package com.pakfortune.model.star;
 
-import com.google.common.base.Enums;
+import com.pakfortune.common.LookupImpl;
+import com.pakfortune.common.LookupInterface;
 
 /*
  劫煞的歌诀为：
@@ -22,6 +23,7 @@ public enum RobKiller {
     丑("寅");
 
     private final String information;
+    private static final LookupInterface lookup = new LookupImpl();
 
     RobKiller(final String information) {
         this.information = information;
@@ -32,10 +34,6 @@ public enum RobKiller {
     }
 
     public static String calculate(String branch) {
-        return getIfPresent(branch).getInformation();
-    }
-
-    public static RobKiller getIfPresent(String name) {
-        return Enums.getIfPresent(RobKiller.class, name).orNull();
+        return lookup.getIfPresent(RobKiller.class, branch).getInformation();
     }
 }

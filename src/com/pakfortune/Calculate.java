@@ -68,6 +68,7 @@ public class Calculate {
 
                     // No need global variables here since this is used for "Year" /////////
                     // 歲煞
+
                     String location = YearKiller.calculate(tempBranch);
                     String yearKillerLocation = ThreeKillers.calculate(tempStem, location);
                     searchAllAndPrint(yearKillerLocation, "真歲煞: \t");

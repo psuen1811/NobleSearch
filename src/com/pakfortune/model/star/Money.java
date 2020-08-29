@@ -1,6 +1,8 @@
 package com.pakfortune.model.star;
 
 import com.google.common.base.Enums;
+import com.pakfortune.common.LookupImpl;
+import com.pakfortune.common.LookupInterface;
 
 @SuppressWarnings({"NonAsciiCharacters", "unused"})
 public enum Money {
@@ -16,6 +18,7 @@ public enum Money {
     癸("甲子");
 
     private final String information;
+    private static final LookupInterface lookup = new LookupImpl();
 
     Money(final String information) {
         this.information = information;
@@ -26,10 +29,6 @@ public enum Money {
     }
 
     public static String calculate(String stem) {
-        return getIfPresent(stem).getInformation();
-    }
-
-    public static Money getIfPresent(String name) {
-        return Enums.getIfPresent(Money.class, name).orNull();
+        return lookup.getIfPresent(Money.class, stem).getInformation();
     }
 }

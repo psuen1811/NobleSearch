@@ -1,6 +1,8 @@
 package com.pakfortune.model.star;
 
 import com.google.common.base.Enums;
+import com.pakfortune.common.LookupImpl;
+import com.pakfortune.common.LookupInterface;
 
 /*
  灾煞的歌诀为
@@ -22,6 +24,7 @@ public enum Disaster {
     丑("卯");
 
     private final String information;
+    private static final LookupInterface lookup = new LookupImpl();
 
     Disaster(final String information) {
         this.information = information;
@@ -32,10 +35,6 @@ public enum Disaster {
     }
 
     public static String calculate(String branch) {
-        return getIfPresent(branch).getInformation();
-    }
-
-    public static Disaster getIfPresent(String name) {
-        return Enums.getIfPresent(Disaster.class, name).orNull();
+        return lookup.getIfPresent(Disaster.class, branch).getInformation();
     }
 }
