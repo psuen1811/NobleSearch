@@ -130,7 +130,7 @@ public class Calculate {
 
     private int searchAllAndPrint(String location, String type) {
         /*
-          真祿馬干支 & 飛度序數
+          真祿馬,煞星干支 & 飛度序數
          */
         int temp = SixtyJiaziTable.getIfPresent(location).ordinal();
         int index = (Integer) circularArrayList.get(temp) % MAGIC_NUMBER;

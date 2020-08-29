@@ -17,7 +17,7 @@ public enum Money {
 
     private final String information;
 
-    Money(String information) {
+    Money(final String information) {
         this.information = information;
     }
 

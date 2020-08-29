@@ -17,7 +17,7 @@ public enum Study {
 
     private final String information;
 
-    Study(String information) {
+    Study(final String information) {
         this.information = information;
     }
 

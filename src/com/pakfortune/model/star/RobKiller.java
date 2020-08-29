@@ -23,7 +23,7 @@ public enum RobKiller {
 
     private final String information;
 
-    RobKiller(String information) {
+    RobKiller(final String information) {
         this.information = information;
     }
 
