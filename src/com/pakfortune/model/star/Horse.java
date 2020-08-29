@@ -1,7 +1,6 @@
 package com.pakfortune.model.star;
 
 import com.pakfortune.model.element.SixtyJiaziTable;
-import com.pakfortune.model.element.Branch;
 
 @SuppressWarnings("NonAsciiCharacters")
 public enum Horse {

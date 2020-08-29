@@ -2,7 +2,6 @@ package com.pakfortune.model.element;
 
 import com.google.common.base.Enums;
 import com.google.common.collect.ImmutableList;
-import com.pakfortune.model.star.Disaster;
 
 import java.util.*;
 import java.util.stream.Collectors;

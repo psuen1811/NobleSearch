@@ -1,6 +1,5 @@
 package com.pakfortune.model.star;
 
-import com.google.common.base.Enums;
 import com.pakfortune.common.LookupImpl;
 import com.pakfortune.common.LookupInterface;
 
