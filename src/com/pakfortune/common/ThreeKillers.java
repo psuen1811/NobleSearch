@@ -8,9 +8,11 @@ import com.pakfortune.model.element.Stem;
  */
 public class ThreeKillers {
 
+    private static final LookupInterface lookup = new LookupImpl();
+
     public static String calculate(String stem, String location) {
         // 取地支序數
-        int branchOrdinal = Branch.getIfPresent(location).ordinal();
+        int branchOrdinal = lookup.getIfPresent(Branch.class, location).ordinal();
         // 由序數計算飛遁天干
         int numOfJump = (FiveTigerHop.hop(stem).ordinal() +
                 ((branchOrdinal - Branch.寅.ordinal()) % Branch.values().length)) % Stem.values().length;

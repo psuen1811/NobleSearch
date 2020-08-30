@@ -1,7 +1,5 @@
 package com.pakfortune.model.element;
 
-import com.google.common.base.Enums;
-
 @SuppressWarnings("NonAsciiCharacters")
 public enum Branch {
     子,    // 子 (0)
@@ -15,9 +13,5 @@ public enum Branch {
     申,    // 申 (8)
     酉,    // 酉 (9)
     戌,    // 戌 (10)
-    亥;    // 亥 (11)
-
-    public static Branch getIfPresent(String name) {
-        return Enums.getIfPresent(Branch.class, name).orNull();
-    }
+    亥    // 亥 (11)
 }

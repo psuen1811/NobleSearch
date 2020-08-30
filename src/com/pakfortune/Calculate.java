@@ -70,18 +70,18 @@ public class Calculate {
                     // 歲煞
 
                     String location = YearKiller.calculate(tempBranch);
-                    String yearKillerLocation = ThreeKillers.calculate(tempStem, location);
-                    searchAllAndPrint(yearKillerLocation, "真歲煞: \t");
+                    String finalLocation = ThreeKillers.calculate(tempStem, location);
+                    searchAllAndPrint(finalLocation, "真歲煞: \t");
 
                     // 劫煞
                     location = RobKiller.calculate(tempBranch);
-                    String robKillerLocation = ThreeKillers.calculate(tempStem, location);
-                    searchAllAndPrint(robKillerLocation, "真劫煞: \t");
+                    finalLocation = ThreeKillers.calculate(tempStem, location);
+                    searchAllAndPrint(finalLocation, "真劫煞: \t");
 
                     // 災煞
                     location = Disaster.calculate(tempBranch);
-                    String disasterLocation = ThreeKillers.calculate(tempStem, location);
-                    searchAllAndPrint(disasterLocation, "真災煞: \t");
+                    finalLocation = ThreeKillers.calculate(tempStem, location);
+                    searchAllAndPrint(finalLocation, "真災煞: \t");
                 }
             } catch (InputStemBranchException e) {
                 System.err.println(e.getMessage());

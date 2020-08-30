@@ -5,6 +5,8 @@ import com.pakfortune.model.element.Stem;
 // 五虎遁
 public class FiveTigerHop {
 
+    private static final LookupInterface lookup = new LookupImpl();
+
     public static Stem hop(String input) {
         String s = null;
         if (input.equals("甲") || input.equals("己"))
@@ -17,6 +19,6 @@ public class FiveTigerHop {
             s = "壬";
         if (input.equals("戊") || input.equals("癸"))
             s = "甲";
-        return Stem.getIfPresent(s);
+        return lookup.getIfPresent(Stem.class, s);
     }
 }

@@ -2,6 +2,8 @@ package com.pakfortune.model.star;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableList;
+import com.pakfortune.common.LookupImpl;
+import com.pakfortune.common.LookupInterface;
 import com.pakfortune.model.element.Stem;
 
 import java.util.List;
@@ -11,6 +13,7 @@ public enum Richman {
     ;
     /* use Google Guava ArrayListMultimap instead of building individual list per enum */
     private static final ArrayListMultimap<String, String> list = ArrayListMultimap.create();
+    private static final LookupInterface lookup = new LookupImpl();
 
     static {
         list.put("甲", "丁丑");
@@ -36,6 +39,6 @@ public enum Richman {
     }
 
     public static List<String> calculate(String stem) {
-        return ImmutableList.copyOf(list.get(Stem.getIfPresent(stem).name()));
+        return ImmutableList.copyOf(list.get(lookup.getIfPresent(Stem.class, stem).name()));
     }
 }
