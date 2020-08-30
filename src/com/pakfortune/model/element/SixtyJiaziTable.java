@@ -1,6 +1,5 @@
 package com.pakfortune.model.element;
 
-import com.google.common.base.Enums;
 import com.google.common.collect.ImmutableList;
 
 import java.util.*;
@@ -33,10 +32,6 @@ public enum SixtyJiaziTable {
         } catch (Exception e) {
             return false;
         }
-    }
-
-    public static SixtyJiaziTable getIfPresent(String name) {
-        return Enums.getIfPresent(SixtyJiaziTable.class, name).orNull();
     }
 
 }

@@ -3,6 +3,8 @@ package com.pakfortune;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.pakfortune.common.CircularArrayList;
+import com.pakfortune.common.LookupImpl;
+import com.pakfortune.common.LookupInterface;
 import com.pakfortune.common.ThreeKillers;
 import com.pakfortune.exception.InputStemBranchException;
 import com.pakfortune.model.element.Direction;
@@ -24,6 +26,7 @@ public class Calculate {
     private final List<Integer> richManResult = Lists.newArrayList();
     private String studyLocation;
     private int studyResult;
+    private static final LookupInterface lookup = new LookupImpl();
 
     @SuppressWarnings("rawtypes")
     private static CircularArrayList circularArrayList;
@@ -50,7 +53,7 @@ public class Calculate {
                     // exit program here or throw some exception
                 } else {
                     // 根據輸入干支飛遁六十甲子
-                    circularArrayList.shiftRight(SixtyJiaziTable.getIfPresent(input).ordinal());
+                    circularArrayList.shiftRight(lookup.getIfPresent(SixtyJiaziTable.class, input).ordinal());
                     // 找真祿干支
                     moneyLocation = Money.calculate(tempStem);
                     moneyResult = searchAllAndPrint(moneyLocation, "真祿: \t");
@@ -110,8 +113,8 @@ public class Calculate {
                             "真流月祿");
 
                     // 流月馬
-                    calculatePrintMonth(inputMonth, SixtyJiaziTable.getIfPresent(horseLocation).name(), arrayList,
-                            circularArrayList, horseResult, "真流月馬");
+                    calculatePrintMonth(inputMonth, lookup.getIfPresent(SixtyJiaziTable.class, horseLocation).name(),
+                            arrayList, circularArrayList, horseResult, "真流月馬");
 
                     // 流月二貴人
                     for (int i = 0; i < 2; i++) {
@@ -133,7 +136,7 @@ public class Calculate {
         /*
           真祿馬,煞星干支 & 飛度序數
          */
-        int temp = SixtyJiaziTable.getIfPresent(location).ordinal();
+        int temp = lookup.getIfPresent(SixtyJiaziTable.class, location).ordinal();
         int index = (Integer) circularArrayList.get(temp) % MAGIC_NUMBER;
         // 真祿馬飛度方向
         System.out.println(type + location + "在" + Direction.findByValue(index));
@@ -148,8 +151,8 @@ public class Calculate {
                                      CircularArrayList circularArrayList, int result, String type) {
         int index;
         // Calculate the # of jumps within Direction
-        int resultMonth = SixtyJiaziTable.getIfPresent(location).ordinal() - SixtyJiaziTable.getIfPresent(inputMonth)
-                .ordinal();
+        int resultMonth = lookup.getIfPresent(SixtyJiaziTable.class, location).ordinal() -
+                lookup.getIfPresent(SixtyJiaziTable.class, inputMonth).ordinal();
         // 負數即月份已過
         if (Integer.signum(resultMonth) < 0) System.out.println(type + "已過");
         else {
