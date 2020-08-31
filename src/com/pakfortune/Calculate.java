@@ -31,6 +31,7 @@ public class Calculate {
     @SuppressWarnings("rawtypes")
     private static CircularArrayList circularArrayList;
 
+    // initialize CircularArrayList for shifting elements purpose
     public Calculate(ArrayList<Integer> arrayList) {
         circularArrayList = new CircularArrayList<>(arrayList);
     }
@@ -43,7 +44,7 @@ public class Calculate {
                 System.out.println("---- 尋找真祿馬貴人 ----\n" + "請輸入流年干支：");
                 scanner = new Scanner(System.in);
                 String input = scanner.nextLine();
-                stemBranchExists = SixtyJiaziTable.ifStemBranchInputExists(SixtyJiaziTable.class, input);
+                stemBranchExists = lookup.ifStemBranchInputExists(SixtyJiaziTable.class, input);
                 String[] arr = input.split("(?!^)");
                 String tempStem = arr[0];
                 String tempBranch = arr[1];
@@ -71,7 +72,6 @@ public class Calculate {
 
                     // No need global variables here since this is used for "Year" /////////
                     // 歲煞
-
                     String location = YearKiller.calculate(tempBranch);
                     String finalLocation = ThreeKillers.calculate(tempStem, location);
                     searchAllAndPrint(finalLocation, "真歲煞: \t");
@@ -102,7 +102,7 @@ public class Calculate {
                 System.out.println("\n請輸入流月干支：");
                 scannerMonth = new Scanner(System.in);
                 inputMonth = scannerMonth.nextLine();
-                stemBranchExists = SixtyJiaziTable.ifStemBranchInputExists(SixtyJiaziTable.class, inputMonth);
+                stemBranchExists = lookup.ifStemBranchInputExists(SixtyJiaziTable.class, inputMonth);
 
                 if (!stemBranchExists) {
                     throw new InputStemBranchException();

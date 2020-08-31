@@ -26,12 +26,4 @@ public enum SixtyJiaziTable {
         return SixtyJiaziTable.values()[value];
     }
 
-    public static <E extends Enum<E>> boolean ifStemBranchInputExists(Class<E> _enumClass, String value) {
-        try {
-            return EnumSet.allOf(_enumClass).contains(Enum.valueOf(_enumClass, value));
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
 }
