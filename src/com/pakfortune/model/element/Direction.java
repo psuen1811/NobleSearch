@@ -10,9 +10,5 @@ public enum Direction {
     坎,
     坤,
     震,
-    巽;
-
-    public static Direction findByValue(int value) {
-        return Direction.values()[value];
-    }
+    巽
 }

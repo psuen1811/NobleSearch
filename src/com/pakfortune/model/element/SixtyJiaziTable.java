@@ -22,8 +22,4 @@ public enum SixtyJiaziTable {
         return ImmutableList.copyOf(values);
     }
 
-    public static SixtyJiaziTable findByValue(int value) {
-        return SixtyJiaziTable.values()[value];
-    }
-
 }

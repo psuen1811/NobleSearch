@@ -22,4 +22,9 @@ public class LookupImpl implements LookupInterface {
             return false;
         }
     }
+
+    @Override
+    public <E extends Enum<E>> E findByValue(Class<E> clazz, int value) {
+        return clazz.getEnumConstants()[value];
+    }
 }

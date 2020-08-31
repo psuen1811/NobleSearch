@@ -139,7 +139,7 @@ public class Calculate {
         int temp = lookup.getIfPresent(SixtyJiaziTable.class, location).ordinal();
         int index = (Integer) circularArrayList.get(temp) % MAGIC_NUMBER;
         // 真祿馬飛度方向
-        System.out.println(type + location + "在" + Direction.findByValue(index));
+        System.out.println(type + location + "在" + lookup.findByValue(Direction.class, index));
 
         // 印位圖
         printOutputGraph(index);
@@ -162,7 +162,7 @@ public class Calculate {
                 // 不變
                 index = (Integer) circularArrayList.get(result) % MAGIC_NUMBER;
             }
-            System.out.println(type + ": \t" + location + "在" + Direction.findByValue(index));
+            System.out.println(type + ": \t" + location + "在" + lookup.findByValue(Direction.class, index));
 
             // 印位圖
             printOutputGraph(index);
