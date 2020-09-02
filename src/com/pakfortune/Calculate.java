@@ -5,7 +5,7 @@ import com.google.common.collect.Lists;
 import com.pakfortune.common.CircularArrayList;
 import com.pakfortune.common.LookupImpl;
 import com.pakfortune.common.LookupInterface;
-import com.pakfortune.common.ThreeKillers;
+import com.pakfortune.common.GetBranchByStem;
 import com.pakfortune.exception.InputStemBranchException;
 import com.pakfortune.model.element.Direction;
 import com.pakfortune.model.element.SixtyJiaziTable;
@@ -73,18 +73,38 @@ public class Calculate {
                     // No need global variables here since this is used for "Year" /////////
                     // 歲煞
                     String location = YearKiller.calculate(tempBranch);
-                    String finalLocation = ThreeKillers.calculate(tempStem, location);
+                    String finalLocation = GetBranchByStem.calculate(tempStem, location);
                     searchAllAndPrint(finalLocation, "真歲煞: \t");
 
                     // 劫煞
                     location = RobKiller.calculate(tempBranch);
-                    finalLocation = ThreeKillers.calculate(tempStem, location);
+                    finalLocation = GetBranchByStem.calculate(tempStem, location);
                     searchAllAndPrint(finalLocation, "真劫煞: \t");
 
                     // 災煞
                     location = Disaster.calculate(tempBranch);
-                    finalLocation = ThreeKillers.calculate(tempStem, location);
+                    finalLocation = GetBranchByStem.calculate(tempStem, location);
                     searchAllAndPrint(finalLocation, "真災煞: \t");
+
+                    // 沐浴
+                    location = Shower.calculate(tempStem);
+                    finalLocation = GetBranchByStem.calculate(tempStem, location);
+                    searchAllAndPrint(finalLocation, "真沐浴: \t");
+
+                    // 桃花
+                    location = Flower.calculate(tempBranch);
+                    finalLocation = GetBranchByStem.calculate(tempStem, location);
+                    searchAllAndPrint(finalLocation, "真桃花: \t");
+
+                    // 紅鸞
+                    location = RedFlower.calculate(tempBranch);
+                    finalLocation = GetBranchByStem.calculate(tempStem, location);
+                    searchAllAndPrint(finalLocation, "真紅鸞: \t");
+
+                    // 天喜
+                    location = SkyHappiness.calculate(tempBranch);
+                    finalLocation = GetBranchByStem.calculate(tempStem, location);
+                    searchAllAndPrint(finalLocation, "真天喜: \t");
                 }
             } catch (InputStemBranchException e) {
                 System.err.println(e.getMessage());
