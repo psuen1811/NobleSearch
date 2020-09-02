@@ -6,7 +6,7 @@ import com.pakfortune.model.element.Stem;
 /*
  真三煞計算
  */
-public class ThreeKillers {
+public class GetBranchByStem {
 
     private static final LookupInterface lookup = new LookupImpl();
 
