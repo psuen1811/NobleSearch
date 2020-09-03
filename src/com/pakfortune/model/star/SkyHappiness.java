@@ -8,18 +8,18 @@ import com.pakfortune.common.LookupInterface;
  */
 @SuppressWarnings("NonAsciiCharacters")
 public enum SkyHappiness {
-    申("酉"),
-    子("申"),
-    辰("未"),
-    亥("午"),
-    卯("巳"),
-    未("辰"),
-    寅("卯"),
-    午("寅"),
-    戌("丑"),
-    巳("子"),
-    酉("亥"),
-    丑("戌");
+    子("酉"),
+    丑("申"),
+    寅("未"),
+    卯("午"),
+    辰("巳"),
+    巳("辰"),
+    午("卯"),
+    未("寅"),
+    申("丑"),
+    酉("子"),
+    戌("亥"),
+    亥("戌");
 
     private final String information;
     private static final LookupInterface lookup = new LookupImpl();

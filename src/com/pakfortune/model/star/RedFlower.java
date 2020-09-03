@@ -8,18 +8,18 @@ import com.pakfortune.common.LookupInterface;
  */
 @SuppressWarnings("NonAsciiCharacters")
 public enum RedFlower {
-    申("卯"),
-    子("寅"),
-    辰("丑"),
-    亥("子"),
-    卯("亥"),
-    未("戌"),
-    寅("酉"),
-    午("申"),
-    戌("未"),
-    巳("午"),
-    酉("巳"),
-    丑("辰");
+    子("卯"),
+    丑("寅"),
+    寅("丑"),
+    卯("子"),
+    辰("亥"),
+    巳("戌"),
+    午("酉"),
+    未("申"),
+    申("未"),
+    酉("午"),
+    戌("巳"),
+    亥("辰");
 
     private final String information;
     private static final LookupInterface lookup = new LookupImpl();

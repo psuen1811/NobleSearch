@@ -8,18 +8,18 @@ import com.pakfortune.common.LookupInterface;
  */
 @SuppressWarnings("NonAsciiCharacters")
 public enum Flower {
-    申("酉"),
-    子("午"),
-    辰("卯"),
-    亥("子"),
-    卯("酉"),
-    未("午"),
+    子("酉"),
+    丑("午"),
     寅("卯"),
-    午("子"),
-    戌("酉"),
+    卯("子"),
+    辰("酉"),
     巳("午"),
-    酉("卯"),
-    丑("子");
+    午("卯"),
+    未("子"),
+    申("酉"),
+    酉("午"),
+    戌("卯"),
+    亥("子");
 
     private final String information;
     private static final LookupInterface lookup = new LookupImpl();
