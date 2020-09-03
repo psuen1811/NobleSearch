@@ -105,6 +105,16 @@ public class Calculate {
                     location = SkyHappiness.calculate(tempBranch);
                     finalLocation = GetBranchByStem.calculate(tempStem, location);
                     searchAllAndPrint(finalLocation, "真天喜: \t");
+
+                    // 喪門
+                    location = DeadDoor.calculate(tempBranch);
+                    finalLocation = GetBranchByStem.calculate(tempStem, location);
+                    searchAllAndPrint(finalLocation, "真喪門: \t");
+
+                    // 吊客
+                    location = Hangman.calculate(tempBranch);
+                    finalLocation = GetBranchByStem.calculate(tempStem, location);
+                    searchAllAndPrint(finalLocation, "真吊客: \t");
                 }
             } catch (InputStemBranchException e) {
                 System.err.println(e.getMessage());
