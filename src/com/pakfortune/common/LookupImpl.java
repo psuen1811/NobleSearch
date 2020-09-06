@@ -15,9 +15,9 @@ public class LookupImpl implements LookupInterface {
     }
 
     @Override
-    public <E extends Enum<E>> boolean ifStemBranchInputExists(Class<E> _enumClass, String value) {
+    public <E extends Enum<E>> boolean ifStemBranchInputExists(Class<E> clazz, String value) {
         try {
-            return EnumSet.allOf(_enumClass).contains(Enum.valueOf(_enumClass, value));
+            return EnumSet.allOf(clazz).contains(Enum.valueOf(clazz, value));
         } catch (Exception e) {
             return false;
         }
