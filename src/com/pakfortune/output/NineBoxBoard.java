@@ -26,6 +26,7 @@ public class NineBoxBoard {
         switch (pos) {
             case 0: // 中
                 nineBoxes[2][2] = c;
+                break;
             case 1: // 坤
                 nineBoxes[4][4] = c;
                 break;
