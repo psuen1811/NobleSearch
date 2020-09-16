@@ -1,6 +1,7 @@
 package com.pakfortune;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.pakfortune.common.CircularArrayList;
 import com.pakfortune.common.LookupImpl;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Calculate {
+public class NobleSearchService {
     private static final int MAGIC_NUMBER = 9;
     private String moneyLocation;
     private int moneyResult;
@@ -28,12 +29,27 @@ public class Calculate {
     private int studyResult;
     private static final LookupInterface lookup = new LookupImpl();
 
+    // declare 60 lunar "六十甲子"" by sequence
+    private static final ArrayList<Integer> sixJiaziList = Lists.newArrayList(SixtyJiaziTable.getSixJiaziList());
     @SuppressWarnings("rawtypes")
     private static CircularArrayList circularArrayList;
 
+    private static class SingletonHolder {
+        public static final NobleSearchService INSTANCE = new NobleSearchService(sixJiaziList);
+    }
+
+    @SuppressWarnings("SameReturnValue")
+    public static NobleSearchService getInstance() {
+        return SingletonHolder.INSTANCE;
+    }
+
+    public List<Integer> getSixJiaziList() {
+        return ImmutableList.copyOf(sixJiaziList);
+    }
+
     // initialize CircularArrayList for shifting elements purpose
-    public Calculate(ArrayList<Integer> arrayList) {
-        circularArrayList = new CircularArrayList<>(arrayList);
+    public NobleSearchService(ArrayList<Integer> sixJiaziList) {
+        circularArrayList = new CircularArrayList<>(sixJiaziList);
     }
 
     public void getYearlyResult() {
@@ -122,7 +138,7 @@ public class Calculate {
         }
     }
 
-    public void getMonthlyResult(final ArrayList<Integer> arrayList) {
+    public void getMonthlyResult(final List<Integer> list) {
         boolean stemBranchExists = false;
         // 當年月份
         Scanner scannerMonth;
@@ -139,20 +155,20 @@ public class Calculate {
                     // exit program here or throw some exception
                 } else {
                     // 流月祿
-                    calculatePrintMonth(inputMonth, moneyLocation, arrayList, circularArrayList, moneyResult,
+                    calculatePrintMonth(inputMonth, moneyLocation, list, circularArrayList, moneyResult,
                             "真流月祿");
 
                     // 流月馬
                     calculatePrintMonth(inputMonth, lookup.getIfPresent(SixtyJiaziTable.class, horseLocation).name(),
-                            arrayList, circularArrayList, horseResult, "真流月馬");
+                            list, circularArrayList, horseResult, "真流月馬");
 
                     // 流月二貴人
                     for (int i = 0; i < 2; i++) {
-                        calculatePrintMonth(inputMonth, richManLocations.get(i), arrayList, circularArrayList,
+                        calculatePrintMonth(inputMonth, richManLocations.get(i), list, circularArrayList,
                                 richManResult.get(i), "真流月貴人");
                     }
 
-                    calculatePrintMonth(inputMonth, studyLocation, arrayList, circularArrayList, studyResult,
+                    calculatePrintMonth(inputMonth, studyLocation, list, circularArrayList, studyResult,
                             "真流月文昌");
 
                 }
@@ -177,7 +193,7 @@ public class Calculate {
     }
 
     @SuppressWarnings("rawtypes")
-    private void calculatePrintMonth(String inputMonth, String location, ArrayList<Integer> arrayList,
+    private void calculatePrintMonth(String inputMonth, String location, List<Integer> list,
                                      CircularArrayList circularArrayList, int result, String type) {
         int index;
         // Calculate the # of jumps within Direction
@@ -187,7 +203,7 @@ public class Calculate {
         if (Integer.signum(resultMonth) < 0) System.out.println(type + "已過");
         else {
             if (Integer.signum(resultMonth) > 0) {
-                index = arrayList.get(resultMonth) % MAGIC_NUMBER;
+                index = list.get(resultMonth) % MAGIC_NUMBER;
             } else {
                 // 不變
                 index = (Integer) circularArrayList.get(result) % MAGIC_NUMBER;
