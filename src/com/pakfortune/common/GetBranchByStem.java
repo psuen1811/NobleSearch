@@ -5,9 +5,6 @@ import com.pakfortune.model.element.Stem;
 
 import static java.lang.Math.abs;
 
-/*
- 真三煞計算
- */
 public class GetBranchByStem {
 
     private static final LookupInterface lookup = new LookupImpl();

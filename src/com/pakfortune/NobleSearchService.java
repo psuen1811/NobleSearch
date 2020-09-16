@@ -70,17 +70,21 @@ public class NobleSearchService {
                 } else {
                     // 根據輸入干支飛遁六十甲子
                     circularArrayList.shiftRight(lookup.getIfPresent(SixtyJiaziTable.class, input).ordinal());
+
                     // 找真祿干支
                     moneyLocation = Money.calculate(tempStem);
                     moneyResult = searchAllAndPrint(moneyLocation, "真祿: \t");
+
                     // 找真馬干支
                     horseLocation = Horse.calculate(tempStem, tempBranch);
                     horseResult = searchAllAndPrint(horseLocation, "真馬: \t");
+
                     // 找貴人干支
                     richManLocations = Richman.calculate(tempStem);
                     for (String s : Preconditions.checkNotNull(richManLocations)) {
                         richManResult.add(searchAllAndPrint(s, "真貴人：\t"));
                     }
+
                     // 真文昌
                     studyLocation = Study.calculate(tempStem);
                     studyResult = searchAllAndPrint(studyLocation, "真文昌: \t");
