@@ -6,6 +6,6 @@ public class NobleSearch {
         // initialize CircularArrayList for shifting elements purpose
         NobleSearchService nobleSearchService = NobleSearchService.getInstance();
         nobleSearchService.getYearlyResult();
-        nobleSearchService.getMonthlyResult(nobleSearchService.getSixJiaziList());
+        nobleSearchService.getMonthlyResult();
     }
 }

@@ -137,7 +137,8 @@ public class NobleSearchService {
         }
     }
 
-    public void getMonthlyResult(final List<Integer> list) {
+    public void getMonthlyResult() {
+        List<Integer> list = getSixJiaziList();
         boolean stemBranchExists = false;
         // 當年月份
         Scanner scannerMonth;
