@@ -13,7 +13,6 @@ import com.pakfortune.model.element.SixtyJiaziTable;
 import com.pakfortune.model.star.*;
 import com.pakfortune.output.NineBoxBoard;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,7 +29,7 @@ public class NobleSearchService {
     private static final LookupInterface lookup = new LookupImpl();
 
     // declare 60 lunar "六十甲子"" by sequence
-    private static final ArrayList<Integer> sixJiaziList = Lists.newArrayList(SixtyJiaziTable.getSixJiaziList());
+    private static final List<Integer> sixJiaziList = Lists.newArrayList(SixtyJiaziTable.getSixJiaziList());
     @SuppressWarnings("rawtypes")
     private static CircularArrayList circularArrayList;
 
@@ -48,7 +47,7 @@ public class NobleSearchService {
     }
 
     // initialize CircularArrayList for shifting elements purpose
-    public NobleSearchService(ArrayList<Integer> sixJiaziList) {
+    public NobleSearchService(List<Integer> sixJiaziList) {
         circularArrayList = new CircularArrayList<>(sixJiaziList);
     }
 
