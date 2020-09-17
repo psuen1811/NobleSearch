@@ -33,8 +33,9 @@ public class NobleSearchService {
     @SuppressWarnings("rawtypes")
     private static CircularArrayList circularArrayList;
 
-    private static class SingletonHolder {
-        public static final NobleSearchService INSTANCE = new NobleSearchService(sixJiaziList);
+    // initialize CircularArrayList for shifting elements purpose
+    public NobleSearchService(List<Integer> sixJiaziList) {
+        circularArrayList = new CircularArrayList<>(sixJiaziList);
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -42,13 +43,12 @@ public class NobleSearchService {
         return SingletonHolder.INSTANCE;
     }
 
-    public List<Integer> getSixJiaziList() {
-        return ImmutableList.copyOf(sixJiaziList);
+    private static class SingletonHolder {
+        public static final NobleSearchService INSTANCE = new NobleSearchService(sixJiaziList);
     }
 
-    // initialize CircularArrayList for shifting elements purpose
-    public NobleSearchService(List<Integer> sixJiaziList) {
-        circularArrayList = new CircularArrayList<>(sixJiaziList);
+    public List<Integer> getSixJiaziList() {
+        return ImmutableList.copyOf(sixJiaziList);
     }
 
     public void getYearlyResult() {
