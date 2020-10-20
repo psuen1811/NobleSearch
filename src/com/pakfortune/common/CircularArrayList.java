@@ -35,4 +35,19 @@ public class CircularArrayList<E> extends ArrayList<E> {
         this.clear();
         this.addAll(temp.values());
     }
+
+    public void shiftLeft(int shiftSize) {
+        int size = this.size();
+        List<E> temp = new ArrayList<>();
+
+        int i = 0;
+        while (i < size) {
+            int k = (i + shiftSize) % size;
+            temp.add(this.get(k));
+            i++;
+        }
+
+        this.clear();
+        this.addAll(temp);
+    }
 }
