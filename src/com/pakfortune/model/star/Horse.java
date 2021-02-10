@@ -55,21 +55,20 @@ public enum Horse {
             return result;
         }
     },
-
     巳酉丑 {
         @Override
         SixtyJiaziTable checkStemBranch(String input) {
             SixtyJiaziTable result = null;
             if (input.equals("乙"))
-                result = SixtyJiaziTable.丁巳;
+                result = SixtyJiaziTable.丁亥;
             if (input.equals("丁"))
-                result = SixtyJiaziTable.辛巳;
+                result = SixtyJiaziTable.辛亥;
             if (input.equals("己"))
-                result = SixtyJiaziTable.乙巳;
+                result = SixtyJiaziTable.乙亥;
             if (input.equals("辛"))
-                result = SixtyJiaziTable.己巳;
+                result = SixtyJiaziTable.己亥;
             if (input.equals("癸"))
-                result = SixtyJiaziTable.癸巳;
+                result = SixtyJiaziTable.癸亥;
             return result;
         }
     };
